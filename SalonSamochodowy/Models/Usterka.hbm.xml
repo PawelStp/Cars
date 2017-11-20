@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true"
+                   assembly="SalonSamochodowy" namespace="SalonSamochodowy.Models">
+  <class name="Usterka" table="Usterka" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <id name="Id_usterki" column="Id_usterki" type="int">
+      <generator class="native" />
+    </id>
+    <set name="NaprawaList" inverse="true" cascade="save-update">
+      <key column="Id_Usterki" />
+      <one-to-many class="Naprawa" ></one-to-many>
+    </set>
+    <property name="Nazwa" column="Nazwa" />
+    <property name="Koszt_czesci" column="Koszt_czesci" />
+    <property name="Koszt_robocizny" column="Koszt_robocizny" />
+    <property name="Ogolny_koszt" column="Ogolny_koszt"/>
+  </class>
+</hibernate-mapping>

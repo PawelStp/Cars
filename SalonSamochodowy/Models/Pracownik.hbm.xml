@@ -8,6 +8,14 @@
     </id>
     <one-to-one name="Pracownik_personalia" constrained="true" foreign-key="none" class="Pracownik_personalia" />
     <many-to-one class="Dzial" name="Dzial" column="Id_dzialu"></many-to-one>
+    <set name="NaprawaList" inverse="true" cascade="save-update">
+      <key column="Id_pracownika" />
+      <one-to-many class="Naprawa" ></one-to-many>
+    </set>
+    <set name="ZamowienieList" inverse="true" cascade="save-update">
+      <key column="Id_pracownika" />
+      <one-to-many class="Zamowienie" ></one-to-many>
+    </set>
     <property name="Id_dzialu" column="Id_dzialu" />
     <property name="Od_kiedy" column="Od_kiedy" />
     <property name="Do_kiedy" column="Do_kiedy" />

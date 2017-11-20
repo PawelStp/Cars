@@ -18,6 +18,14 @@ namespace SalonSamochodowy.Models
             configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Samochod.hbm.xml"));
             configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Zakup.hbm.xml"));
             configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Klient.hbm.xml"));
+            configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Naprawa.hbm.xml"));
+            configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Usterka.hbm.xml"));
+            configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Zamowienie.hbm.xml"));
+            configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Status_zamowienia.hbm.xml"));
+            configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Dostawa.hbm.xml"));
+            configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Fabryka.hbm.xml"));
+            configuration.AddFile(HttpContext.Current.Server.MapPath(@"~\Models\Samochod_fabryka.hbm.xml"));
+
             ISessionFactory sessionFactory = configuration.BuildSessionFactory();
             return sessionFactory.OpenSession();
         }

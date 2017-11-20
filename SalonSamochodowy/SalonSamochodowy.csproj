@@ -169,13 +169,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dostawa.cs" />
     <Compile Include="Models\Dzial.cs" />
+    <Compile Include="Models\Fabryka.cs" />
     <Compile Include="Models\Klient.cs" />
+    <Compile Include="Models\Naprawa.cs" />
     <Compile Include="Models\NHibernateSession.cs" />
     <Compile Include="Models\Pracownik.cs" />
     <Compile Include="Models\Pracownik_personalia.cs" />
     <Compile Include="Models\Samochod.cs" />
+    <Compile Include="Models\Samochod_fabryka.cs" />
+    <Compile Include="Models\Status_zamowienia.cs" />
+    <Compile Include="Models\Usterka.cs" />
     <Compile Include="Models\Zakup.cs" />
+    <Compile Include="Models\Zamowienie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,12 +193,19 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="hibernate.cfg.xml" />
+    <Content Include="Models\Dostawa.hbm.xml" />
     <Content Include="Models\Dzial.hbm.xml" />
+    <Content Include="Models\Fabryka.hbm.xml" />
     <Content Include="Models\Klient.hbm.xml" />
+    <Content Include="Models\Naprawa.hbm.xml" />
     <Content Include="Models\Pracownik.hbm.xml" />
     <Content Include="Models\Pracownik_personalia.hbm.xml" />
     <Content Include="Models\Samochod.hbm.xml" />
+    <Content Include="Models\Samochod_fabryka.hbm.xml" />
+    <Content Include="Models\Status_zamowienia.hbm.xml" />
+    <Content Include="Models\Usterka.hbm.xml" />
     <Content Include="Models\Zakup.hbm.xml" />
+    <Content Include="Models\Zamowienie.hbm.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
