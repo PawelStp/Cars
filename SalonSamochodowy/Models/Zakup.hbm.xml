@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true"
+                   assembly="SalonSamochodowy" namespace="SalonSamochodowy.Models">
+  <class name="Zakup" table="Zakup" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <id name="Id_zakupu" column="Id_zakupu" type="int">
+      <generator class="native" />
+    </id>
+    <many-to-one name="Samochod" unique="true" class="Samochod" >
+      <column name="Id_samochodu"/>
+    </many-to-one>
+    <many-to-one class="Klient" name="Klient" column="Id_klienta"></many-to-one>
+    <many-to-one class="Pracownik" name="Pracownik" column="Id_pracownika"></many-to-one>
+    <property name="Data_zakupu" column="Data_zakupu" />
+    <property name="Id_klienta" column="Id_klienta" />
+    <property name="Id_pracownika" column="Id_pracownika" />
+    <property name="Id_samochodu" column="Id_pracownika"/>
+  </class>
+</hibernate-mapping> 

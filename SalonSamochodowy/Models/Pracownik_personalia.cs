@@ -9,7 +9,7 @@ namespace SalonSamochodowy.Models
     {
         public virtual int Id_pracownika { get; set; }
         public virtual Pracownik Pracownik { get; set; }
-        public virtual DateTime Data_zakupu { get; set; }
+        public virtual DateTime Data_zatrudnienia { get; set; }
         public virtual string Imie { get; set; }
         public virtual string Nazwisko { get; set; }
         public virtual string Kod_pocztowy { get; set; }

@@ -6,11 +6,10 @@
     <id name="Id_pracownika" column="Id_pracownika" type="int">
       <generator class="native" />
     </id>
+    <one-to-one name="Pracownik_personalia" constrained="true" foreign-key="none" class="Pracownik_personalia" />
+    <many-to-one class="Dzial" name="Dzial" column="Id_dzialu"></many-to-one>
     <property name="Id_dzialu" column="Id_dzialu" />
     <property name="Od_kiedy" column="Od_kiedy" />
     <property name="Do_kiedy" column="Do_kiedy" />
-    <many-to-one name="Pracownik_personalia" unique="true" class="Pracownik_personalia">
-      <column name="Id_pracownika"/>
-    </many-to-one>
   </class>
 </hibernate-mapping>

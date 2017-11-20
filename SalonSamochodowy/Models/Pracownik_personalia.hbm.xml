@@ -6,8 +6,10 @@
     <id name="Id_pracownika" column="Id_pracownika" type="int">
       <generator class="native" />
     </id>
-    <one-to-one name="Pracownik" constrained="true" foreign-key="none" class="Pracownik"/>
-    <property name="Data_zakupu" column="Data_zakupu"/>
+    <many-to-one name="Pracownik" unique="true" class="Pracownik" > 
+      <column name="Id_pracownika"/>
+    </many-to-one>
+    <property name="Data_zatrudnienia" column="Data_zatrudnienia"/>
     <property name="Imie" column="Imie"/>
     <property name="Nazwisko" column="Nazwisko"/>
     <property name="Kod_pocztowy" column="Kod_pocztowy"/>

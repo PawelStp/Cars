@@ -170,9 +170,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Dzial.cs" />
+    <Compile Include="Models\Klient.cs" />
     <Compile Include="Models\NHibernateSession.cs" />
     <Compile Include="Models\Pracownik.cs" />
     <Compile Include="Models\Pracownik_personalia.cs" />
+    <Compile Include="Models\Samochod.cs" />
+    <Compile Include="Models\Zakup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,8 +187,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="hibernate.cfg.xml" />
     <Content Include="Models\Dzial.hbm.xml" />
+    <Content Include="Models\Klient.hbm.xml" />
     <Content Include="Models\Pracownik.hbm.xml" />
     <Content Include="Models\Pracownik_personalia.hbm.xml" />
+    <Content Include="Models\Samochod.hbm.xml" />
+    <Content Include="Models\Zakup.hbm.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

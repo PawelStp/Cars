@@ -14,8 +14,10 @@ namespace SalonSamochodowy.Controllers
         {
             ISession session = NHibernateSession.OpenSession();
             {
-                var persons = session.Query<Dzial>().ToList();
-                return View(persons);
+                var persons1 = session.Query<Klient>().ToList();
+                var persons2 = session.Query<Samochod>().ToList();
+                var persons3 = session.Query<Zakup>().ToList();
+                return View();
             }
             return View();
         }
