@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static SalonSamochodowy.Repository.DBContext;
 
 namespace SalonSamochodowy.Controllers
 {
@@ -12,17 +13,10 @@ namespace SalonSamochodowy.Controllers
     {
         public ActionResult Index()
         {
-            ISession session = NHibernateSession.OpenSession();
+            using (var dbContext = new DbContext())
             {
-                var persons1 = session.Query<Klient>().ToList();
-                var persons2 = session.Query<Fabryka>().ToList();
-                var persons3 = session.Query<Samochod_fabryka>().ToList();
-                var persons4 = session.Query<Zakup>().ToList();
-                var persons5 = session.Query<Zamowienie>().ToList();
-                var persons6 = session.Query<Pracownik>().ToList();
-                //var persons7 = session.Query<Status_zamowienia>().ToList();
-                //var persons8 = session.Query<Samochod>().ToList();
-                return View();
+                dbContext.InitData();
+                dbContext.SaveChanges();
             }
             return View();
         }

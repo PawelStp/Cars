@@ -3,11 +3,10 @@
                    assembly="SalonSamochodowy" namespace="SalonSamochodowy.Models">
   <class name="Pracownik" table="Pracownik" dynamic-update="true" >
     <cache usage="read-write"/>
-    <id name="Id_pracownika" column="Id_pracownika" type="int">
+    <id name="Id" column="Id_pracownika" type="int">
       <generator class="native" />
     </id>
-    <one-to-one name="Pracownik_personalia" constrained="true" foreign-key="none" class="Pracownik_personalia" />
-    <many-to-one class="Dzial" name="Dzial" column="Id_dzialu"></many-to-one>
+    <many-to-one class="Dzial" name="Dzial" column="Id_dzialu" insert="false" update="false"></many-to-one>
     <set name="NaprawaList" inverse="true" cascade="save-update">
       <key column="Id_pracownika" />
       <one-to-many class="Naprawa" ></one-to-many>

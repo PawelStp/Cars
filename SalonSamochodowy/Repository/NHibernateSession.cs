@@ -3,7 +3,7 @@ using NHibernate.Cfg;
 using System.Reflection;
 using System.Web;
 
-namespace SalonSamochodowy.Models
+namespace SalonSamochodowy.Repository
 {
     public class NHibernateSession 
     {

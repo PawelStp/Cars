@@ -3,11 +3,11 @@
                    assembly="SalonSamochodowy" namespace="SalonSamochodowy.Models">
   <class name="Usterka" table="Usterka" dynamic-update="true" >
     <cache usage="read-write"/>
-    <id name="Id_usterki" column="Id_usterki" type="int">
+    <id name="Id" column="Id_usterki" type="int">
       <generator class="native" />
     </id>
     <set name="NaprawaList" inverse="true" cascade="save-update">
-      <key column="Id_Usterki" />
+      <key column="Id_usterki" />
       <one-to-many class="Naprawa" ></one-to-many>
     </set>
     <property name="Nazwa" column="Nazwa" />

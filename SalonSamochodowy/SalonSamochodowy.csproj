@@ -174,7 +174,9 @@
     <Compile Include="Models\Fabryka.cs" />
     <Compile Include="Models\Klient.cs" />
     <Compile Include="Models\Naprawa.cs" />
-    <Compile Include="Models\NHibernateSession.cs" />
+    <Compile Include="Repository\DBContext.cs" />
+    <Compile Include="Repository\IEntity.cs" />
+    <Compile Include="Repository\NHibernateSession.cs" />
     <Compile Include="Models\Pracownik.cs" />
     <Compile Include="Models\Pracownik_personalia.cs" />
     <Compile Include="Models\Samochod.cs" />
@@ -184,6 +186,7 @@
     <Compile Include="Models\Zakup.cs" />
     <Compile Include="Models\Zamowienie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -193,24 +196,28 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="hibernate.cfg.xml" />
-    <Content Include="Models\Dostawa.hbm.xml" />
-    <Content Include="Models\Dzial.hbm.xml" />
-    <Content Include="Models\Fabryka.hbm.xml" />
-    <Content Include="Models\Klient.hbm.xml" />
-    <Content Include="Models\Naprawa.hbm.xml" />
-    <Content Include="Models\Pracownik.hbm.xml" />
-    <Content Include="Models\Pracownik_personalia.hbm.xml" />
-    <Content Include="Models\Samochod.hbm.xml" />
-    <Content Include="Models\Samochod_fabryka.hbm.xml" />
-    <Content Include="Models\Status_zamowienia.hbm.xml" />
-    <Content Include="Models\Usterka.hbm.xml" />
+    <EmbeddedResource Include="Models\Dostawa.hbm.xml" />
+    <EmbeddedResource Include="Models\Dzial.hbm.xml" />
+    <EmbeddedResource Include="Models\Fabryka.hbm.xml" />
+    <EmbeddedResource Include="Models\Klient.hbm.xml" />
+    <EmbeddedResource Include="Models\Naprawa.hbm.xml" />
+    <EmbeddedResource Include="Models\Pracownik.hbm.xml" />
+    <EmbeddedResource Include="Models\Pracownik_personalia.hbm.xml" />
+    <EmbeddedResource Include="Models\Samochod.hbm.xml" />
+    <EmbeddedResource Include="Models\Samochod_fabryka.hbm.xml" />
+    <EmbeddedResource Include="Models\Status_zamowienia.hbm.xml" />
+    <EmbeddedResource Include="Models\Usterka.hbm.xml" />
     <Content Include="Models\Zakup.hbm.xml" />
-    <Content Include="Models\Zamowienie.hbm.xml" />
+    <EmbeddedResource Include="Models\Zamowienie.hbm.xml" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

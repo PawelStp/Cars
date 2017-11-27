@@ -3,7 +3,7 @@
                    assembly="SalonSamochodowy" namespace="SalonSamochodowy.Models">
   <class name="Pracownik_personalia" table="Pracownik_personalia" dynamic-update="true" >
     <cache usage="read-write"/>
-    <id name="Id_pracownika" column="Id_pracownika" type="int">
+    <id name="Id" column="Id_pracownika" type="int">
       <generator class="native" />
     </id>
     <many-to-one name="Pracownik" unique="true" class="Pracownik" > 
