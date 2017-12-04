@@ -26,6 +26,7 @@ namespace SalonSamochodowy.Repository
             public RepositoryBase<Status_zamowienia> Statusy_zamowienia { get; set; }
             public RepositoryBase<Usterka> Usterki { get; set; }
             public RepositoryBase<Zakup> Zakup { get; set; }
+            public RepositoryBase<Zamowienie> Zamowienia { get; set; }
 
             public DbContext()
             {
@@ -43,12 +44,11 @@ namespace SalonSamochodowy.Repository
                 Klienci = new RepositoryBase<Klient>(transaction, session);
                 Naprawy = new RepositoryBase<Naprawa>(transaction, session);
                 Pracownicy = new RepositoryBase<Pracownik>(transaction, session);
-                Personalia_pracownikow = new RepositoryBase<Pracownik_personalia>(transaction, session);
                 Samochody = new RepositoryBase<Samochod>(transaction, session);
                 Samochody_fabryczne = new RepositoryBase<Samochod_fabryka>(transaction, session);
-                Statusy_zamowienia = new RepositoryBase<Status_zamowienia>(transaction, session);
                 Usterki = new RepositoryBase<Usterka>(transaction, session);
                 Zakup = new RepositoryBase<Zakup>(transaction, session);
+                Zamowienia = new RepositoryBase<Zamowienie>(transaction, session);
             }
 
             public void SaveChanges()
@@ -66,29 +66,75 @@ namespace SalonSamochodowy.Repository
             public void InitData()
             {
                 DeleteAll();
-                var pracownik = new Pracownik() { Id_dzialu = 1, Od_kiedy = DateTime.Now, Do_kiedy = DateTime.Now.AddDays(2) };
-                Pracownicy.Add(pracownik);
-                transaction.Commit();
-                Personalia_pracownikow.Add(new Pracownik_personalia
-                {
-                    Imie = "Pawel",
-                    Nazwisko = "Stypulkowski",
-                    Kod_pocztowy = "18-218",
-                    Miejscowosc = "Sokoly",
-                    Ulica = "Truskolasy Lachy",
-                    Nr_domu = 19,
-                    Nr_telefoonu = "518665682",
-                    Pensja = 1000,
-                    Id = pracownik.Id,
-                    PESEL = "123123123",
-                    Data_zatrudnienia = DateTime.Now
-                });
+                var dzialAdministracji = new Dzial() { Nazwa = "Administracja" };
+                var dzialNaprawy = new Dzial() { Nazwa = "Mechanika" };
+                Dzialy.Add(dzialAdministracji);
+                Dzialy.Add(dzialNaprawy);
+
+                var pracownikPawel = new Pracownik() { Id_dzialu = dzialAdministracji.Id,Imie="Pawel", Nazwisko="Stypulkowski" };
+                var pracownikKacper = new Pracownik() { Id_dzialu = dzialNaprawy.Id, Imie = "Kacper", Nazwisko = "Swislocki"};
+                Pracownicy.Add(pracownikPawel);
+                Pracownicy.Add(pracownikKacper);
+
+                var klientTybor = new Klient() { Imie = "Marcin", Nazwisko = "Tyborowski", Kod_pocztowy = "20-200", Miejscowosc = "Lapy", Nr_domu = 10, Ulica = "Lawendowa", NIP = "123123123", PESEL = "969696", Nr_telefonu = "515151515" };
+                var klientSado = new Klient() { Imie = "Michal", Nazwisko = "Sadowski", Kod_pocztowy = "20-220", Miejscowosc = "Choroszcz", Nr_domu = 20, Ulica = "Zlotoria", NIP = "123123312", PESEL = "96969697", Nr_telefonu = "515123235" };
+                Klienci.Add(klientTybor);
+                Klienci.Add(klientSado);
+
+                var fabrykaAudi = new Fabryka() { Nazwa = "Audi", Nr_telefonu = "4764214", Adres="Niemcy 10" };
+                var fabrykaToyoty = new Fabryka() { Nazwa = "Toyota", Nr_telefonu = "42141212", Adres="Japonia 20"};
+                Fabryki.Add(fabrykaAudi);
+                Fabryki.Add(fabrykaToyoty);
+
+                var autoAudi = new Samochod_fabryka() { Id_fabryki = fabrykaAudi.Id, Marka = "Audi", Model = "A", Moc_silnika = 1, Pojemnosc_silnika = (float)1.00, Typ_wyposazenia = "tak", Cena_fabryka = 25000 };
+                var autoToyota = new Samochod_fabryka() { Id_fabryki = fabrykaToyoty.Id, Marka = "Toyota", Model = "T", Moc_silnika = 2, Pojemnosc_silnika = (float)2.00, Typ_wyposazenia = "tak", Cena_fabryka = 35000 };
+                Samochody_fabryczne.Add(autoAudi);
+                Samochody_fabryczne.Add(autoToyota);
+
+                var zamowienieAudi = new Zamowienie() { Id_pracownika = pracownikPawel.Id, Id_samochodu_fabryka = autoAudi.Id, Ilosc_zamowionych = 50, Ilosc_dostarczonych = 10, Obecny_status = "Niezrealizowane", Data_zamowienia = DateTime.Now.AddDays(-2) };
+                var zamowienieToyoty = new Zamowienie() { Id_pracownika = pracownikPawel.Id, Id_samochodu_fabryka = autoToyota.Id, Ilosc_zamowionych = 100, Ilosc_dostarczonych = 100, Obecny_status = "Zrealizowane", Data_zamowienia = DateTime.Now.AddDays(-2) };
+                Zamowienia.Add(zamowienieAudi);
+                Zamowienia.Add(zamowienieToyoty);
+
+                var dostawaAudi = new Dostawa() { Id_zamowienia = zamowienieAudi.Id, Data_dostawy = DateTime.Now.AddDays(-1) };
+                var dostawaToyoty = new Dostawa() { Id_zamowienia = zamowienieToyoty.Id, Data_dostawy = DateTime.Now.AddDays(-1) };
+                Dostawy.Add(dostawaAudi);
+                Dostawy.Add(dostawaToyoty);
+
+                var samochoduAudi = new Samochod() { Id_dostawy = dostawaAudi.Id, Cena = 30000, Marka = autoAudi.Marka, Model = autoAudi.Model, Moc_silnika = autoAudi.Moc_silnika, Pojemnosc_silnika = autoAudi.Pojemnosc_silnika, Typ_wyposazenia = "tak", Data_produkcji = DateTime.Now.AddYears(-2)};
+                var samochodToyota = new Samochod() { Id_dostawy = dostawaToyoty.Id, Cena = 30000, Marka = autoToyota.Marka, Model = autoToyota.Model, Moc_silnika = autoToyota.Moc_silnika, Pojemnosc_silnika = autoToyota.Pojemnosc_silnika, Typ_wyposazenia = "tak", Data_produkcji = DateTime.Now.AddYears(-2)};
+                Samochody.Add(samochoduAudi);
+                Samochody.Add(samochodToyota);
+
+                var usterka1 = new Usterka() { Koszt_czesci = 200, Koszt_robocizny = 100, Ogolny_koszt = 300, Nazwa = "Urw" };
+                var usterka2 = new Usterka() { Koszt_czesci = 200, Koszt_robocizny = 200, Ogolny_koszt = 400, Nazwa = "Ura" };
+                Usterki.Add(usterka1);
+                Usterki.Add(usterka2);
+
+                var naprawaToyoty = new Naprawa() { Id_pracownika = pracownikKacper.Id, Id_usterki = usterka1.Id, Id_samochodu = samochodToyota.Id };
+                var naprawaAudi = new Naprawa() { Id_pracownika = pracownikKacper.Id, Id_usterki = usterka2.Id, Id_samochodu = samochoduAudi.Id };
+                Naprawy.Add(naprawaToyoty);
+                Naprawy.Add(naprawaAudi);
+
+                var zakupToyoty = new Zakup() { Id_klienta = klientSado.Id, Id_pracownika = pracownikPawel.Id, Id_samochodu = samochodToyota.Id, Data_zakupu = DateTime.Now };
+                var zakupAudi = new Zakup() { Id_klienta = klientTybor.Id, Id_pracownika = pracownikPawel.Id, Id_samochodu = samochoduAudi.Id, Data_zakupu = DateTime.Now };
+                Zakup.Add(zakupToyoty);
+                Zakup.Add(zakupAudi);
             }
             private void DeleteAll()
             {
-                session.Delete("from Pracownik_personalia");
-                session.Flush();
+                session.Delete("from Zakup");
+                session.Delete("from Naprawa");
+                session.Delete("from Usterka");
+                session.Delete("from Samochod");
+                session.Delete("from Dostawa");
+                session.Delete("from Zamowienie");
+                session.Delete("from Samochod_fabryka");
+                session.Delete("from Fabryka");
                 session.Delete("from Pracownik");
+                session.Delete("from Dzial");
+                session.Delete("from Klient");
+          
             }
         }
     }

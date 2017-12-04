@@ -7,9 +7,5 @@
       <generator class="native" />
     </id>
     <property name="Nazwa" column="Nazwa" />
-    <set name="PracownikList" inverse="true" cascade="save-update">
-      <key column="Id_dzialu" />
-      <one-to-many class="Pracownik" ></one-to-many>
-    </set>
   </class>
 </hibernate-mapping>

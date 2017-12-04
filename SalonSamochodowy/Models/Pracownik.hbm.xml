@@ -6,17 +6,17 @@
     <id name="Id" column="Id_pracownika" type="int">
       <generator class="native" />
     </id>
-    <many-to-one class="Dzial" name="Dzial" column="Id_dzialu" insert="false" update="false"></many-to-one>
-    <set name="NaprawaList" inverse="true" cascade="save-update">
-      <key column="Id_pracownika" />
-      <one-to-many class="Naprawa" ></one-to-many>
-    </set>
-    <set name="ZamowienieList" inverse="true" cascade="save-update">
-      <key column="Id_pracownika" />
-      <one-to-many class="Zamowienie" ></one-to-many>
-    </set>
+    <many-to-one name="Dzial" column="Id_dzialu" update="false" insert="false"/>
     <property name="Id_dzialu" column="Id_dzialu" />
-    <property name="Od_kiedy" column="Od_kiedy" />
-    <property name="Do_kiedy" column="Do_kiedy" />
+    <property name="Data_zatrudnienia" column="Data_zatrudnienia"/>
+    <property name="Imie" column="Imie"/>
+    <property name="Nazwisko" column="Nazwisko"/>
+    <property name="Kod_pocztowy" column="Kod_pocztowy"/>
+    <property name="Miejscowosc" column="Miejscowosc"/>
+    <property name="Ulica" column="Ulica"/>
+    <property name="Nr_domu" column="Nr_domu"/>
+    <property name="Nr_telefoonu" column="Nr_telefoonu"/>
+    <property name="PESEL" column="PESEL"/>
+    <property name="Pensja" column="Pensja"/>
   </class>
 </hibernate-mapping>

@@ -11,7 +11,6 @@ namespace SalonSamochodowy.Models
         public virtual int Id { get; set; }
         public virtual int Id_zamowienia { get; set; }
         public virtual DateTime Data_dostawy { get; set; }
-        public virtual IEnumerable<Samochod> SamochodList { get; set; }
         public virtual Zamowienie Zamowienie { get; set; }
     }
 }

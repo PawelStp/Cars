@@ -17,6 +17,5 @@ namespace SalonSamochodowy.Models
         public virtual int Moc_silnika { get; set; }
         public virtual int Cena_fabryka { get; set; }
         public virtual Fabryka Fabryka { get; set; }
-        public virtual IEnumerable<Zamowienie> ZamowienieList { get; set; }
     }
 }

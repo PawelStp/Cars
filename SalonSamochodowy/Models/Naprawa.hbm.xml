@@ -6,9 +6,9 @@
     <id name="Id" column="Id_naprawy" type="int">
       <generator class="native" />
     </id>
-    <many-to-one class="Samochod" name="Samochod" column="Id_samochodu"></many-to-one>
-    <many-to-one class="Usterka" name="Usterka" column="Id_usterki"></many-to-one>
-    <many-to-one class="Pracownik" name="Pracownik" column="Id_pracownika"></many-to-one>
+    <many-to-one class="Samochod" name="Samochod" column="Id_samochodu" update="false" insert="false"></many-to-one>
+    <many-to-one class="Usterka" name="Usterka" column="Id_usterki" update="false" insert="false"></many-to-one>
+    <many-to-one class="Pracownik" name="Pracownik" column="Id_pracownika" update="false" insert="false"></many-to-one>
     <property name="Id_pracownika" column="Id_pracownika" />
     <property name="Id_samochodu" column="Id_samochodu" />
     <property name="Data_naprawy" column="Data_naprawy" />

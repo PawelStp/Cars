@@ -6,11 +6,9 @@
     <id name="Id" column="Id_zakupu" type="int">
       <generator class="native" />
     </id>
-    <many-to-one name="Samochod" unique="true" class="Samochod" >
-      <column name="Id_samochodu"/>
-    </many-to-one>
-    <many-to-one class="Klient" name="Klient" column="Id_klienta"></many-to-one>
-    <many-to-one class="Pracownik" name="Pracownik" column="Id_pracownika"></many-to-one>
+    <many-to-one class="Samochod" name="Samochod" column="Id_samochodu" update="false" insert="false"></many-to-one>
+    <many-to-one class="Klient" name="Klient" column="Id_klienta" update="false" insert="false"></many-to-one>
+    <many-to-one class="Pracownik" name="Pracownik" column="Id_pracownika" update="false" insert="false"></many-to-one>
     <property name="Data_zakupu" column="Data_zakupu" />
     <property name="Id_klienta" column="Id_klienta" />
     <property name="Id_pracownika" column="Id_pracownika" />

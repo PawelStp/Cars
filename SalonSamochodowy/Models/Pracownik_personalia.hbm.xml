@@ -3,11 +3,14 @@
                    assembly="SalonSamochodowy" namespace="SalonSamochodowy.Models">
   <class name="Pracownik_personalia" table="Pracownik_personalia" dynamic-update="true" >
     <cache usage="read-write"/>
-    <id name="Id" column="Id_pracownika" type="int">
-      <generator class="native" />
+    <id name="Id" column="Id" type="int">
+      <generator class="identity" />
     </id>
-    <many-to-one name="Pracownik" unique="true" class="Pracownik" > 
-      <column name="Id_pracownika"/>
+    <many-to-one name="Pracownik"
+                unique="true"
+                class="Pracownik" update="false" insert="false" inverse="true">
+      <!-- Use many-to-one for a foreign key -->
+      <column name="Id_pracownika" />
     </many-to-one>
     <property name="Data_zatrudnienia" column="Data_zatrudnienia"/>
     <property name="Imie" column="Imie"/>

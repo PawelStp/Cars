@@ -13,9 +13,9 @@ namespace SalonSamochodowy.Models
         public virtual int Ilosc_zamowionych { get; set; }
         public virtual DateTime Data_zamowienia { get; set; }
         public virtual int Id_samochodu_fabryka { get; set; }
-        public virtual Status_zamowienia Status_zamowienia { get; set; }
-        public virtual Pracownik Pracownik { get; set; }
-        public virtual IEnumerable<Dostawa> DostawaList { get; set; }
+        public virtual int Ilosc_dostarczonych { get; set; }
+        public virtual string Obecny_status { get; set; }
         public virtual Samochod_fabryka Samochod_fabryka { get; set; }
+        public virtual Pracownik Pracownik { get; set; }
     }
 }

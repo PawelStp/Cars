@@ -6,11 +6,7 @@
     <id name="Id" column="Id_samochodu_fabryka" type="int">
       <generator class="native" />
     </id>
-    <set name="ZamowienieList" inverse="true" cascade="save-update">
-      <key column="Id_samochodu_fabryka" />
-      <one-to-many class="Zamowienie" ></one-to-many>
-    </set>
-    <many-to-one class="Fabryka" name="Fabryka" column="Id_fabryki"></many-to-one>
+    <many-to-one class="Fabryka" name="Fabryka" column="Id_fabryki" update="false" insert="false"></many-to-one>
     <property name="Id_fabryki" column="Id_fabryki"></property>
     <property name="Marka" column="Marka" />
     <property name="Model" column="Model" />

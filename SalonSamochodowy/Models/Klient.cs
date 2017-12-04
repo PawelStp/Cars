@@ -9,7 +9,6 @@ namespace SalonSamochodowy.Models
     public class Klient : IEntity
     {
         public virtual int Id { get; set; }
-        public virtual IEnumerable<Zakup> ZakupList { get; set; }
         public virtual string Imie { get; set; }
         public virtual string Nazwisko { get; set; }
         public virtual string Kod_pocztowy { get; set; }
