@@ -34,12 +34,16 @@ namespace SalonSamochodowy.Controllers
 
         // POST: Usterka/Create
         [HttpPost]
-        public ActionResult Create(Usterka collection)
+        public ActionResult Create(Usterka usterka)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Usterki.Add(usterka);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

@@ -16,6 +16,6 @@ namespace SalonSamochodowy.Models
         [Required]
         public virtual DateTime Data_dostawy { get; set; }
         public virtual Zamowienie Zamowienie { get; set; }
-        public virtual int Ilosc_dostarczonych { get; set; }
+        public virtual int? Ilosc_dostarczonych { get; set; }
     }
 }

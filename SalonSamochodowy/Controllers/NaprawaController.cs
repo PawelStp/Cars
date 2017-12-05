@@ -34,12 +34,16 @@ namespace SalonSamochodowy.Controllers
 
         // POST: Naprawa/Create
         [HttpPost]
-        public ActionResult Create(Naprawa collection)
+        public ActionResult Create(Naprawa naprawa)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Naprawy.Add(naprawa);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

@@ -6,8 +6,7 @@
 
 <h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","Pracownik", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -24,10 +23,26 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Stanowisko, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Stanowisko, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Stanowisko, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Data_zatrudnienia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Data_zatrudnienia, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Data_zatrudnienia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Do_kiedy_zatrudniony, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Do_kiedy_zatrudniony, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Do_kiedy_zatrudniony, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -80,10 +95,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nr_telefoonu, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nr_telefonu, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nr_telefoonu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nr_telefoonu, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Nr_telefonu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nr_telefonu, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -114,7 +129,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

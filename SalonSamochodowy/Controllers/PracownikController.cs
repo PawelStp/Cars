@@ -34,15 +34,19 @@ namespace SalonSamochodowy.Controllers
 
         // POST: Pracownik/Create
         [HttpPost]
-        public ActionResult Create(Pracownik collection)
+        public ActionResult Create(Pracownik pracownik)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Pracownicy.Add(pracownik);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
                 return View();
             }

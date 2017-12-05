@@ -34,12 +34,16 @@ namespace SalonSamochodowy.Controllers
 
         // POST: Zamowienie/Create
         [HttpPost]
-        public ActionResult Create(Zamowienie collection)
+        public ActionResult Create(Zamowienie zamowienie)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Zamowienia.Add(zamowienie);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

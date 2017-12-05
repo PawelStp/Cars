@@ -17,7 +17,7 @@ namespace SalonSamochodowy.Models
         public virtual string Kod_pocztowy { get; set; }
         public virtual string Miejscowosc { get; set; }
         public virtual string Ulica { get; set; }
-        public virtual int Nr_domu { get; set; }
+        public virtual int? Nr_domu { get; set; }
         [Required]
         public virtual string Nr_telefonu { get; set; }
         [Required]

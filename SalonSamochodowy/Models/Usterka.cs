@@ -12,8 +12,8 @@ namespace SalonSamochodowy.Models
         public virtual int Id { get; set; }
         [Required]
         public virtual string Nazwa { get; set; }
-        public virtual int Koszt_czesci { get; set; }
-        public virtual int Koszt_robocizny { get; set; }
-        public virtual int Ogolny_koszt { get; set; }
+        public virtual int? Koszt_czesci { get; set; }
+        public virtual int? Koszt_robocizny { get; set; }
+        public virtual int? Ogolny_koszt { get; set; }
     }
 }

@@ -13,11 +13,11 @@ namespace SalonSamochodowy.Controllers
     {
         public ActionResult Index()
         {
-            using (var dbContext = new DbContext())
-            {
-                dbContext.InitData();
-                dbContext.SaveChanges();
-            }
+            //using (var dbContext = new DbContext())
+            //{
+            //    dbContext.InitData();
+            //    dbContext.SaveChanges();
+            //}
             return View();
         }
 

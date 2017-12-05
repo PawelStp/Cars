@@ -10,7 +10,7 @@ namespace SalonSamochodowy.Models
     {
         public virtual int Id { get; set; }
         public virtual string Obecny_status { get; set; }
-        public virtual int Ilosc_dostarczonych { get; set; }
+        public virtual int? Ilosc_dostarczonych { get; set; }
         public virtual Zamowienie Zamowienie { get; set; }
     }
 }

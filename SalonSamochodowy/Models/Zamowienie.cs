@@ -19,7 +19,7 @@ namespace SalonSamochodowy.Models
         [Required]
         public virtual int Id_samochodu_fabryka { get; set; }
         [Required]
-        public virtual int Ilosc_dostarczonych { get; set; }
+        public virtual int? Ilosc_dostarczonych { get; set; }
         public virtual string Obecny_status { get; set; }
         public virtual Samochod_fabryka Samochod_fabryka { get; set; }
         public virtual Pracownik Pracownik { get; set; }

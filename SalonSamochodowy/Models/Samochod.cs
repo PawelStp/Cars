@@ -15,10 +15,10 @@ namespace SalonSamochodowy.Models
         [Required]
         public virtual string Model { get; set; }
         public virtual string Typ_wyposazenia { get; set; }
-        public virtual DateTime Data_produkcji { get; set; }
-        public virtual float Pojemnosc_silnika { get; set; }
-        public virtual int Moc_silnika { get; set; }
-        public virtual int Cena { get; set; }
+        public virtual DateTime? Data_produkcji { get; set; }
+        public virtual float? Pojemnosc_silnika { get; set; }
+        public virtual int? Moc_silnika { get; set; }
+        public virtual int? Cena { get; set; }
         [Required]
         public virtual int Id_dostawy { get; set; }
         public virtual Dostawa Dostawa { get; set; }
