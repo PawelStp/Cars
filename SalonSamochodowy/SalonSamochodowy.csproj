@@ -165,7 +165,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\DostawaController.cs" />
+    <Compile Include="Controllers\DzialController.cs" />
+    <Compile Include="Controllers\FabrykaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KlientController.cs" />
+    <Compile Include="Controllers\NaprawaController.cs" />
+    <Compile Include="Controllers\PracownikController.cs" />
+    <Compile Include="Controllers\SamochodFabrykaController.cs" />
+    <Compile Include="Controllers\UsterkaController.cs" />
+    <Compile Include="Controllers\ZakupController.cs" />
+    <Compile Include="Controllers\ZamowienieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,6 +254,26 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Pracownik\Index.cshtml" />
+    <Content Include="Views\Dzial\Index.cshtml" />
+    <Content Include="Views\Klient\Index.cshtml" />
+    <Content Include="Views\Dostawa\Index.cshtml" />
+    <Content Include="Views\Zamowienie\Index.cshtml" />
+    <Content Include="Views\Fabryka\Index.cshtml" />
+    <Content Include="Views\SamochodFabryka\Index.cshtml" />
+    <Content Include="Views\Usterka\Index.cshtml" />
+    <Content Include="Views\Zakup\Index.cshtml" />
+    <Content Include="Views\Naprawa\Index.cshtml" />
+    <Content Include="Views\Fabryka\Create.cshtml" />
+    <Content Include="Views\Dzial\Create.cshtml" />
+    <Content Include="Views\Pracownik\Create.cshtml" />
+    <Content Include="Views\Usterka\Create.cshtml" />
+    <Content Include="Views\Klient\Create.cshtml" />
+    <Content Include="Views\Dostawa\Create.cshtml" />
+    <Content Include="Views\Zakup\Create.cshtml" />
+    <Content Include="Views\Naprawa\Create.cshtml" />
+    <Content Include="Views\Zamowienie\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

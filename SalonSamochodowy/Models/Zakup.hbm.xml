@@ -12,6 +12,6 @@
     <property name="Data_zakupu" column="Data_zakupu" />
     <property name="Id_klienta" column="Id_klienta" />
     <property name="Id_pracownika" column="Id_pracownika" />
-    <property name="Id_samochodu" column="Id_pracownika"/>
+    <property name="Id_samochodu" column="Id_samochodu"/>
   </class>
 </hibernate-mapping> 

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SalonSamochodowy.Models.Zamowienie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_pracownika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilosc_zamowionych)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_zamowienia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_samochodu_fabryka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilosc_dostarczonych)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Obecny_status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_pracownika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilosc_zamowionych)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_zamowienia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_samochodu_fabryka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilosc_dostarczonych)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Obecny_status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
