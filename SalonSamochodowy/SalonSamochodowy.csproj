@@ -247,33 +247,33 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Klient\Create.cshtml" />
+    <Content Include="Views\Klient\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
-    <Content Include="Views\Pracownik\Index.cshtml" />
-    <Content Include="Views\Dzial\Index.cshtml" />
-    <Content Include="Views\Klient\Index.cshtml" />
-    <Content Include="Views\Dostawa\Index.cshtml" />
-    <Content Include="Views\Zamowienie\Index.cshtml" />
-    <Content Include="Views\Fabryka\Index.cshtml" />
-    <Content Include="Views\SamochodFabryka\Index.cshtml" />
-    <Content Include="Views\Usterka\Index.cshtml" />
-    <Content Include="Views\Zakup\Index.cshtml" />
-    <Content Include="Views\Naprawa\Index.cshtml" />
-    <Content Include="Views\Fabryka\Create.cshtml" />
-    <Content Include="Views\Dzial\Create.cshtml" />
-    <Content Include="Views\Pracownik\Create.cshtml" />
-    <Content Include="Views\Usterka\Create.cshtml" />
-    <Content Include="Views\Klient\Create.cshtml" />
     <Content Include="Views\Dostawa\Create.cshtml" />
-    <Content Include="Views\Zakup\Create.cshtml" />
+    <Content Include="Views\Dostawa\Index.cshtml" />
+    <Content Include="Views\Dzial\Create.cshtml" />
+    <Content Include="Views\Dzial\Index.cshtml" />
+    <Content Include="Views\Fabryka\Create.cshtml" />
+    <Content Include="Views\Fabryka\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Naprawa\Create.cshtml" />
+    <Content Include="Views\Naprawa\Index.cshtml" />
+    <Content Include="Views\Pracownik\Create.cshtml" />
+    <Content Include="Views\Pracownik\Index.cshtml" />
+    <Content Include="Views\SamochodFabryka\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Usterka\Create.cshtml" />
+    <Content Include="Views\Usterka\Index.cshtml" />
+    <Content Include="Views\Zakup\Create.cshtml" />
+    <Content Include="Views\Zakup\Index.cshtml" />
     <Content Include="Views\Zamowienie\Create.cshtml" />
+    <Content Include="Views\Zamowienie\Index.cshtml" />
+    <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalonSamochodowy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,12 +34,16 @@ namespace SalonSamochodowy.Controllers
 
         // POST: Klient/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Klient kleint)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Klienci.Add(kleint);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

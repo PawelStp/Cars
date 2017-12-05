@@ -71,13 +71,13 @@ namespace SalonSamochodowy.Repository
                 Dzialy.Add(dzialAdministracji);
                 Dzialy.Add(dzialNaprawy);
 
-                var pracownikPawel = new Pracownik() { Id_dzialu = dzialAdministracji.Id,Imie="Pawel", Nazwisko="Stypulkowski" };
-                var pracownikKacper = new Pracownik() { Id_dzialu = dzialNaprawy.Id, Imie = "Kacper", Nazwisko = "Swislocki"};
+                var pracownikPawel = new Pracownik() { Id_dzialu = dzialAdministracji.Id,Imie="Pawel", Nazwisko="Stypulkowski", Stanowisko = "Prezes", PESEL="95959", Data_zatrudnienia = DateTime.Now.AddDays(-10) };
+                var pracownikKacper = new Pracownik() { Id_dzialu = dzialNaprawy.Id, Imie = "Kacper", Nazwisko = "Swislocki", Stanowisko = "Slugus", PESEL="87878", Data_zatrudnienia=DateTime.Now.AddDays(-1) };
                 Pracownicy.Add(pracownikPawel);
                 Pracownicy.Add(pracownikKacper);
 
-                var klientTybor = new Klient() { Imie = "Marcin", Nazwisko = "Tyborowski", Kod_pocztowy = "20-200", Miejscowosc = "Lapy", Nr_domu = 10, Ulica = "Lawendowa", NIP = "123123123", PESEL = "969696", Nr_telefonu = "515151515" };
-                var klientSado = new Klient() { Imie = "Michal", Nazwisko = "Sadowski", Kod_pocztowy = "20-220", Miejscowosc = "Choroszcz", Nr_domu = 20, Ulica = "Zlotoria", NIP = "123123312", PESEL = "96969697", Nr_telefonu = "515123235" };
+                var klientTybor = new Klient() { Imie = "Marcin", Nazwisko = "Tyborowski", Kod_pocztowy = "20-200", Miejscowosc = "Lapy", Nr_domu = 10, Ulica = "Lawendowa", PESEL = "969696", Nr_telefonu = "515151515"};
+                var klientSado = new Klient() { Imie = "Michal", Nazwisko = "Sadowski", Kod_pocztowy = "20-220", Miejscowosc = "Choroszcz", Nr_domu = 20, Ulica = "Zlotoria",  PESEL = "96969697", Nr_telefonu = "515123235" };
                 Klienci.Add(klientTybor);
                 Klienci.Add(klientSado);
 
@@ -134,7 +134,6 @@ namespace SalonSamochodowy.Repository
                 session.Delete("from Pracownik");
                 session.Delete("from Dzial");
                 session.Delete("from Klient");
-          
             }
         }
     }

@@ -12,6 +12,7 @@
     <property name="Model" column="Model" />
     <property name="Typ_wyposazenia" column="Typ_wyposazenia" />
     <property name="Pojemnosc_silnika" column="Pojemnosc_silnika"/>
+    <property name="Data_produkcji" column="Data_produkcji"/>
     <property name="Moc_silnika" column="Moc_silnika"/>
     <property name="Cena_fabryka" column="Cena_fabryka"/>
   </class>

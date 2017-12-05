@@ -9,5 +9,6 @@
     <many-to-one class="Zamowienie" name="Zamowienie" column="Id_zamowienia" update="false" insert="false"></many-to-one>
     <property name="Id_zamowienia" column="Id_zamowienia" />
     <property name="Data_dostawy" column="Data_dostawy" />
+    <property name="Ilosc_dostarczonych" column="Ilosc_dostarczonych" />
   </class>
 </hibernate-mapping>

@@ -9,13 +9,15 @@
     <many-to-one name="Dzial" column="Id_dzialu" update="false" insert="false"/>
     <property name="Id_dzialu" column="Id_dzialu" />
     <property name="Data_zatrudnienia" column="Data_zatrudnienia"/>
+    <property name="Do_kiedy_zatrudniony" column="Do_kiedy_zatrudniony"/>
+    <property name="Stanowisko" column="Stanowisko"/>
     <property name="Imie" column="Imie"/>
     <property name="Nazwisko" column="Nazwisko"/>
     <property name="Kod_pocztowy" column="Kod_pocztowy"/>
     <property name="Miejscowosc" column="Miejscowosc"/>
     <property name="Ulica" column="Ulica"/>
     <property name="Nr_domu" column="Nr_domu"/>
-    <property name="Nr_telefoonu" column="Nr_telefoonu"/>
+    <property name="Nr_telefonu" column="Nr_telefonu"/>
     <property name="PESEL" column="PESEL"/>
     <property name="Pensja" column="Pensja"/>
   </class>

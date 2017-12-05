@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalonSamochodowy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,12 +34,12 @@ namespace SalonSamochodowy.Controllers
 
         // POST: Dostawa/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Dostawa collection)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                
                 return RedirectToAction("Index");
             }
             catch

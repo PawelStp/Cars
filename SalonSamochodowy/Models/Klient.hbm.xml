@@ -14,6 +14,5 @@
     <property name="Nr_domu" column="Nr_domu"/>
     <property name="Nr_telefonu" column="Nr_telefonu"/>
     <property name="PESEL" column="PESEL"/>
-    <property name="NIP" column="NIP"/>
   </class>
 </hibernate-mapping>
