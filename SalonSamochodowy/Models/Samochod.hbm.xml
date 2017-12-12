@@ -15,5 +15,6 @@
     <property name="Moc_silnika" column="Moc_silnika"/>
     <property name="Cena" column="Cena"/>
     <property name="Id_dostawy" column="Id_dostawy"/>
+    <property name="Status" column="Statuss"/>
   </class>
 </hibernate-mapping>

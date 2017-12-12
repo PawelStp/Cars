@@ -1,4 +1,5 @@
 ﻿using SalonSamochodowy.Models;
+using SalonSamochodowy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,20 +28,47 @@ namespace SalonSamochodowy.Controllers
         }
 
         // GET: Zakup/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+            ZakupViewModel zvm;
+            using (var dbContext = new DbContext())
+            {
+                var s = dbContext.Klienci.GetAll();
+
+                zvm = new ZakupViewModel
+                {
+                    Id_samochodu = id,
+                    Id_pracownika = int.Parse(User.Identity.Name)
+                };
+                zvm.Klienci = s.Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Imie + " " + x.Nazwisko + " " + x.PESEL
+
+                });
+            }
+          
+
+            return View(zvm);
         }
 
         // POST: Zakup/Create
         [HttpPost]
-        public ActionResult Create(Zakup zakup)
+        public ActionResult Create(ZakupViewModel z)
         {
             try
             {
                 // TODO: Add insert logic here
                 using (var dbContext = new DbContext())
                 {
+                    var zakup = new Zakup
+                    {
+                        Id_klienta = z.Id_klienta,
+                        Id_samochodu = z.Id_samochodu,
+                        Id_pracownika = z.Id_pracownika,
+                        Data_zakupu = z.Data_zakupu
+                    };
+
                     dbContext.Zakup.Add(zakup);
                     dbContext.SaveChanges();
                 }

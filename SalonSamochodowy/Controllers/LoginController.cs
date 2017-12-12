@@ -55,16 +55,7 @@ namespace SalonSamochodowy.Controllers
 
                         return RedirectToAction("Index", "Home");
                     }
-                    else
-                    {
-                        
-                    }
                 }
-                else
-                {
-
-                }
-
             }
             return View();
         }
