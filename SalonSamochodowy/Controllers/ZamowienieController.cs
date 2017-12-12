@@ -1,4 +1,5 @@
 ﻿using SalonSamochodowy.Models;
+using SalonSamochodowy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,19 +30,40 @@ namespace SalonSamochodowy.Controllers
         // GET: Zamowienie/Create
         public ActionResult Create()
         {
-            return View();
+            ZamowienieViewModel zvm = new ZamowienieViewModel();
+            using (var dbContext = new DbContext())
+            {
+                var s = dbContext.Samochody_fabryczne.GetAll();
+                zvm.SamochodyFabryczne = s.Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Marka + " " + x.Model + " " + x.Pojemnosc_silnika + " " + x.Moc_silnika 
+
+                });
+            }
+            return View(zvm);
         }
 
         // POST: Zamowienie/Create
         [HttpPost]
-        public ActionResult Create(Zamowienie zamowienie)
+        public ActionResult Create(ZamowienieViewModel zamowienie)
         {
             try
             {
+                Zamowienie z = new Zamowienie
+                {
+                    Id_pracownika = int.Parse(User.Identity.Name),
+                    Data_zamowienia = zamowienie.Data_zamowienia,
+                    Ilosc_dostarczonych = 0,
+                    Ilosc_zamowionych = zamowienie.Ilosc_zamowionych,
+                    Obecny_status = "Niezrealizowane",
+                    Id_samochodu_fabryka = zamowienie.Id_samochodu_fabryka
+                };
+
                 // TODO: Add insert logic here
                 using (var dbContext = new DbContext())
                 {
-                    dbContext.Zamowienia.Add(zamowienie);
+                    dbContext.Zamowienia.Add(z);
                     dbContext.SaveChanges();
                 }
                 return RedirectToAction("Index");

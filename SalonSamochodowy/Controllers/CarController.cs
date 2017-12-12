@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalonSamochodowy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -50,17 +51,25 @@ namespace SalonSamochodowy.Controllers
         // GET: Car/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Samochody.GetAll();
+                return View(dzialy.Where(d => d.Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Car/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Samochod collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Samochody.Update(collection);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

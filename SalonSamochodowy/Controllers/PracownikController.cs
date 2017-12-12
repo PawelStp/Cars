@@ -13,11 +13,11 @@ namespace SalonSamochodowy.Controllers
         // GET: Pracownik
         public ActionResult Index()
         {
-            using (var dbContext = new DbContext())
-            {
-                var pracownicy = dbContext.Pracownicy.GetAll();
-                return View(pracownicy);
-            }
+                using (var dbContext = new DbContext())
+                {
+                    var pracownicy = dbContext.Pracownicy.GetAll();
+                    return View(pracownicy);
+                }
         }
 
         // GET: Pracownik/Details/5
@@ -38,17 +38,38 @@ namespace SalonSamochodowy.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                using (var dbContext = new DbContext())
+                if (ModelState.IsValid)
                 {
-                    dbContext.Pracownicy.Add(pracownik);
-                    dbContext.SaveChanges();
+                    // TODO: Add insert logic here
+                    using (var dbContext = new DbContext())
+                    {
+                        var pracownicy = dbContext.Pracownicy.GetAll();
+
+                        var p = pracownicy.Where(pr => pr.PESEL == pracownik.PESEL).FirstOrDefault();
+
+                        pracownik.Password = Crypto.Hash(pracownik.Password);
+                        //  pracownik.ConfirmPassword = Crypto.Hash(pracownik.ConfirmPassword);
+                        pracownik.Role = "Pracownik";
+
+                        if(p!=null)
+                        {
+                            ModelState.AddModelError("PeselIstnieje", "Pesel istnieje w bazie danych");
+                            return View(pracownik);
+                        }
+                        dbContext.Pracownicy.Add(pracownik);
+                        dbContext.SaveChanges();
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                else
+                {
+                    return View();
+                }
+                
             }
             catch(Exception e)
             {
-                return View();
+                return View(pracownik);
             }
         }
 

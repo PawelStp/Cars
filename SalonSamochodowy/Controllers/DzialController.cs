@@ -39,7 +39,11 @@ namespace SalonSamochodowy.Controllers
             try
             {
                 // TODO: Add insert logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Dzialy.Add(collection);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -51,17 +55,25 @@ namespace SalonSamochodowy.Controllers
         // GET: Dzial/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Dzialy.GetAll();
+                return View(dzialy.Where(d => d.Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Dzial/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Dzial collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Dzialy.Update(collection);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

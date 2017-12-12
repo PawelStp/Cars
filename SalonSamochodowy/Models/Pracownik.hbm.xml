@@ -20,5 +20,7 @@
     <property name="Nr_telefonu" column="Nr_telefonu"/>
     <property name="PESEL" column="PESEL"/>
     <property name="Pensja" column="Pensja"/>
+    <property name="Password" column="Passwordd"/>
+    <property name="Role" column="Roles"/>
   </class>
 </hibernate-mapping>

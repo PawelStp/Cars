@@ -13,7 +13,7 @@ namespace SalonSamochodowy.Models
         [Required]
         public virtual int Id_dzialu { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Stanowisko wymagane")]
         public virtual string Stanowisko { get; set; }
         [Required]
         public virtual DateTime Data_zatrudnienia { get; set; }
@@ -31,14 +31,28 @@ namespace SalonSamochodowy.Models
         public virtual string Ulica { get; set; }
 
         public virtual int? Nr_domu { get; set; }
+
         [Required]
         public virtual string Nr_telefonu { get; set; }
+
         [Required]
         public virtual string PESEL { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [DataType(DataType.Password)]
+        [MinLength(6,ErrorMessage = "Przynajmniej 6 znakow")]
+        public virtual string Password { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Hasla sie roznia")]
+        public virtual string ConfirmPassword { get; set; }
 
         public virtual int? Pensja { get; set; }
 
         public virtual Dzial Dzial { get; set; }
+
+        public virtual string Role { get; set; }
 
     }
 }

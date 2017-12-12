@@ -71,8 +71,8 @@ namespace SalonSamochodowy.Repository
                 Dzialy.Add(dzialAdministracji);
                 Dzialy.Add(dzialNaprawy);
 
-                var pracownikPawel = new Pracownik() { Id_dzialu = dzialAdministracji.Id,Imie="Pawel", Nazwisko="Stypulkowski", Stanowisko = "Prezes", PESEL="95959", Data_zatrudnienia = DateTime.Now.AddDays(-10) };
-                var pracownikKacper = new Pracownik() { Id_dzialu = dzialNaprawy.Id, Imie = "Kacper", Nazwisko = "Swislocki", Stanowisko = "Slugus", PESEL="87878", Data_zatrudnienia=DateTime.Now.AddDays(-1) };
+                var pracownikPawel = new Pracownik() { Id_dzialu = dzialAdministracji.Id,Imie="Pawel", Nazwisko="Stypulkowski", Stanowisko = "Prezes", PESEL="95959", Data_zatrudnienia = DateTime.Now.AddDays(-10), Password=Crypto.Hash("Bigos123"), Role="Admin" };
+                var pracownikKacper = new Pracownik() { Id_dzialu = dzialNaprawy.Id, Imie = "Kacper", Nazwisko = "Swislocki", Stanowisko = "Slugus", PESEL="87878", Data_zatrudnienia=DateTime.Now.AddDays(-1), Password = Crypto.Hash("Bigos123"), Role = "Pracownik" };
                 Pracownicy.Add(pracownikPawel);
                 Pracownicy.Add(pracownikKacper);
 

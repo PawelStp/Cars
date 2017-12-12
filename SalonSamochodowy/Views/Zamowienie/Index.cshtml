@@ -53,9 +53,7 @@
             @Html.DisplayFor(modelItem => item.Obecny_status)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Dodaj dostawe", "Create", "Dostawa", new { id=item.Id },null) |
         </td>
     </tr>
 }

@@ -27,9 +27,10 @@ namespace SalonSamochodowy.Controllers
         }
 
         // GET: Dostawa/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+            
+            return View(new Dostawa { Id_zamowienia=id});
         }
 
         // POST: Dostawa/Create
@@ -55,17 +56,25 @@ namespace SalonSamochodowy.Controllers
         // GET: Dostawa/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Dostawy.GetAll();
+                return View(dzialy.Where(d => d.Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Dostawa/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Dostawa collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Dostawy.Update(collection);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

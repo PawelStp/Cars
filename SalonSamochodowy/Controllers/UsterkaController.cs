@@ -55,20 +55,27 @@ namespace SalonSamochodowy.Controllers
         // GET: Usterka/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Usterki.GetAll();
+                return View(dzialy.Where(d => d.Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Usterka/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Usterka collection)
         {
             try
             {
-                // TODO: Add update logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    dbContext.Usterki.Update(collection);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
                 return View();
             }

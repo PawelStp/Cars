@@ -26,11 +26,10 @@ namespace SalonSamochodowy.Repository
 
         }
 
-        //public virtual void Update(T entity)
-        //{
-        //    _dbSet.Attach(entity);
-        //    _dataContext.Entry(entity).State = EntityState.Modified;
-        //}
+        public virtual void Update(T entity)
+        {
+            session.Update(entity);
+        }
 
         //public virtual void Delete(T entity)
         //{

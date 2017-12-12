@@ -171,12 +171,14 @@
     <Compile Include="Controllers\FabrykaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KlientController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NaprawaController.cs" />
     <Compile Include="Controllers\PracownikController.cs" />
     <Compile Include="Controllers\SamochodFabrykaController.cs" />
     <Compile Include="Controllers\UsterkaController.cs" />
     <Compile Include="Controllers\ZakupController.cs" />
     <Compile Include="Controllers\ZamowienieController.cs" />
+    <Compile Include="Crypto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +200,8 @@
     <Compile Include="Models\Zamowienie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ZamowienieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -240,6 +244,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\Zamowienie\Create.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -255,8 +260,6 @@
     <Content Include="Views\Dzial\Index.cshtml" />
     <Content Include="Views\Fabryka\Create.cshtml" />
     <Content Include="Views\Fabryka\Index.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Naprawa\Create.cshtml" />
     <Content Include="Views\Naprawa\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -264,16 +267,22 @@
     <Content Include="Views\Usterka\Index.cshtml" />
     <Content Include="Views\Zakup\Create.cshtml" />
     <Content Include="Views\Zakup\Index.cshtml" />
-    <Content Include="Views\Zamowienie\Create.cshtml" />
     <Content Include="Views\Zamowienie\Index.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Pracownik\Create.cshtml" />
     <Content Include="Views\Pracownik\Index.cshtml" />
     <Content Include="Views\SamochodFabryka\Index.cshtml" />
     <Content Include="Views\Dostawa\Create.cshtml" />
     <Content Include="Views\Dostawa\Index.cshtml" />
     <Content Include="Views\Klient\Create.cshtml" />
     <Content Include="Views\Klient\Index.cshtml" />
+    <Content Include="Views\Pracownik\Create.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Dzial\Edit.cshtml" />
+    <Content Include="Views\Fabryka\Edit.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Klient\Edit.cshtml" />
+    <Content Include="Views\Usterka\Edit.cshtml" />
+    <Content Include="Views\Dostawa\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

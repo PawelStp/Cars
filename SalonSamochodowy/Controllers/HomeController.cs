@@ -18,21 +18,10 @@ namespace SalonSamochodowy.Controllers
             //    dbContext.InitData();
             //    dbContext.SaveChanges();
             //}
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (Request.IsAuthenticated)
+                return View();
+            else
+                return RedirectToAction("Login", "Login");
         }
     }
 }
