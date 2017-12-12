@@ -71,6 +71,10 @@
                 {
                     @Html.ActionLink("Sprzedaj", "Create", "Zakup", new { id = item.Id }, null)
                 }
+                else
+                {
+                    @Html.ActionLink("Naprawa", "Create", "Naprawa", new { id = item.Id }, null)
+                }
             </td>
         </tr>
     }

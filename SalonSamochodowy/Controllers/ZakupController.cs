@@ -70,6 +70,9 @@ namespace SalonSamochodowy.Controllers
                     };
 
                     dbContext.Zakup.Add(zakup);
+                    var samochod = dbContext.Samochody.GetById(z.Id_samochodu);
+                    samochod.Status = "Sprzedany";
+                    dbContext.Samochody.Update(samochod);
                     dbContext.SaveChanges();
                 }
                 return RedirectToAction("Index");

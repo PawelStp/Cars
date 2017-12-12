@@ -76,7 +76,8 @@ namespace SalonSamochodowy.Controllers
                             Id_dostawy = dostawa.Id,
                             Model = samochod.Model,
                             Pojemnosc_silnika = samochod.Pojemnosc_silnika,
-                            Typ_wyposazenia = samochod.Typ_wyposazenia
+                            Typ_wyposazenia = samochod.Typ_wyposazenia,
+                            Status = "Niesprzedany"
                         };
 
                         dbContext.Samochody.Add(s);
