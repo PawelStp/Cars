@@ -77,7 +77,11 @@ namespace SalonSamochodowy.Controllers
         // GET: Naprawa/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Pracownicy.GetAll();
+                return View(dzialy.Where(d => d.Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Naprawa/Edit/5

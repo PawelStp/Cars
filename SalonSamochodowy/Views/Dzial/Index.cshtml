@@ -4,29 +4,32 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="text-center">
+    <h2>Wszystkie działy</h2>
+    <p>
+        @Html.ActionLink("Dodaj nowy dział", "Create", null, new { @class = "btn btn-success" })
+    </p>
+</div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nazwa)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Szczególy", "Details", "Dzial", new { id = item.Id }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwa)
-        </td>
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Szczegoly", "Details", "Dzial", new { id = item.Id }, null)
-        </td>
-    </tr>
-}
+    </table>
 
-</table>
