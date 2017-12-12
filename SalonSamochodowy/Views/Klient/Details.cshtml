@@ -4,11 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="text-center">
+    <h2>Samochody klienta</h2>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -64,9 +63,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Id_dostawy)
         </td>
-        <td>
-            @Html.ActionLink("Naprawa", "Create", "Naprawa", new { id = item.Id }, null)
-        </td>
+        @if (item!= null)
+        {
+            <td>
+                @Html.ActionLink("Naprawa", "Create", "Naprawa", new { id = item.Id }, null)
+            </td>
+        }
     </tr>
 }
 

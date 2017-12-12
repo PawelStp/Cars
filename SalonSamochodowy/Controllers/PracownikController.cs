@@ -116,6 +116,7 @@ namespace SalonSamochodowy.Controllers
                 // TODO: Add update logic here
                 using (var dbContext = new DbContext())
                 {
+                    collection.Password = Crypto.Hash(collection.Password);
                     dbContext.Pracownicy.Update(collection);
                     dbContext.SaveChanges();
                 }

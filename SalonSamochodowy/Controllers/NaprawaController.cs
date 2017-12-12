@@ -17,7 +17,31 @@ namespace SalonSamochodowy.Controllers
             using (var dbContext = new DbContext())
             {
                 var naprawy = dbContext.Naprawy.GetAll();
-                return View(naprawy);
+                var list = new List<NaprawaViewModels>();
+                var pracownicy = dbContext.Pracownicy.GetAll();
+                var samochody = dbContext.Samochody.GetAll();
+                var usterki = dbContext.Usterki.GetAll();
+
+                foreach (var naprawa in naprawy)
+                {
+                    var pracownik = pracownicy.Where(p => p.Id == naprawa.Id_pracownika).FirstOrDefault();
+                    var usterka = usterki.Where(u => u.Id == naprawa.Id_usterki).FirstOrDefault();
+                    var samochod = samochody.Where(s => s.Id == naprawa.Id_samochodu).FirstOrDefault();
+
+                    list.Add(new NaprawaViewModels
+                    {
+                        Id = naprawa.Id,
+                        Data_naprawy = naprawa.Data_naprawy,
+                        Id_pracownika = pracownik.Id,
+                        Imie = pracownik.Imie,
+                        Nazwisko = pracownik.Nazwisko,
+                        NazwaUsterki = usterka.Nazwa,
+                        Marka = samochod.Marka,
+                        Model = samochod.Model,
+                        Id_samochodu = samochod.Id
+                    });
+                }
+                return View(list);
             }
         }
 
