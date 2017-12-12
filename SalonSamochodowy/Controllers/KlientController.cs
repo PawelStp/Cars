@@ -20,6 +20,30 @@ namespace SalonSamochodowy.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(Klient klient)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                using (var dbContext = new DbContext())
+                {
+                    var list = dbContext.Klienci.GetAll().Where(k=>k.Imie==klient.Imie && k.Nazwisko == klient.Nazwisko).ToList();
+                    return View("Index", list);
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         // GET: Klient/Details/5
         public ActionResult Details(int id)
         {

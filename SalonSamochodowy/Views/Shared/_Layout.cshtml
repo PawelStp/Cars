@@ -6,34 +6,126 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .dropbtn {
+            background-color: rgba(0,0,0,0.2);
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                    background-color: #808080
+                }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #808080;
+        }
+    </style>
 </head>
 <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Strona główna", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Samochody", "Index", "Car")</li>
-                    <li>@Html.ActionLink("Dostawy", "Index", "Dostawa")</li>
-                    <li>@Html.ActionLink("Działy", "Index", "Dzial")</li>
-                    <li>@Html.ActionLink("Fabryki", "Index", "Fabryka")</li>
-                    <li>@Html.ActionLink("Klienci", "Index", "Klient")</li>
-                    <li>@Html.ActionLink("Naprawy", "Index", "Naprawa")</li>
-                    <li>@Html.ActionLink("Pracownicy", "Index", "Pracownik")</li>
-                    <li>@Html.ActionLink("Usterki", "Index", "Usterka")</li>
-                    <li>@Html.ActionLink("Zakupy", "Index", "Zakup")</li>
-                    <li>@Html.ActionLink("Zamówienia", "Index", "Zamowienie")</li>
-                    <li>@Html.ActionLink("Wyloguj się", "Logout", "Login")</li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Pracownik</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Pracownicy", "Index", "Pracownik")
+                                @Html.ActionLink("Działy", "Index", "Dzial")
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Samochód</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Dostępne", "Index", "Car")
+                                @Html.ActionLink("Sprzedane", "Sellout", "Car")
+                                @Html.ActionLink("Naprawy", "Index", "Naprawa")
+                                @Html.ActionLink("Usterki", "Index", "Usterka")
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Zamówienia i dostawy</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Dostawy", "Index", "Dostawa")
+                                @Html.ActionLink("Zamówienia zrealizowane", "Index", "Zamowienie")
+                                @Html.ActionLink("Zamówienia niezrealizowane", "NotEnded", "Zamowienie")
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Klient</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Klienci", "Index", "Klient")
+                                @Html.ActionLink("Wyszukaj klienta", "Search", "Klient")
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
+            @*<div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Strona główna", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>*@
+            @*<div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Pracownicy", "Index", "Pracownik")</li>
+                        <li>@Html.ActionLink("Samochody", "Index", "Car")</li>
+                        <li>@Html.ActionLink("Działy", "Index", "Dzial")</li>
+                        <li>@Html.ActionLink("Fabryki", "Index", "Fabryka")</li>
+                        <li>@Html.ActionLink("Klienci", "Index", "Klient")</li>
+                        <li>@Html.ActionLink("Naprawy", "Index", "Naprawa")</li>
+                        <li>@Html.ActionLink("Usterki", "Index", "Usterka")</li>
+                        <li>@Html.ActionLink("Zakupy", "Index", "Zakup")</li>
+                        <li>@Html.ActionLink("Dostawy", "Index", "Dostawa")</li>
+                        <li>@Html.ActionLink("Zamówienia", "Index", "Zamowienie")</li>
+                        <li>@Html.ActionLink("Wyloguj się", "Logout", "Login")</li>
+                    </ul>
+                </div>*@
         </div>
     </div>
     <div class="container body-content">

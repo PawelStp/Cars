@@ -16,8 +16,17 @@ namespace SalonSamochodowy.Controllers
         {
             using (var dbContext = new DbContext())
             {
-                var zamowenia = dbContext.Zamowienia.GetAll();
+                var zamowenia = dbContext.Zamowienia.GetAll().Where(z=>z.Obecny_status=="Zrealizowane").ToList();
                 return View(zamowenia);
+            }
+        }
+
+        public ActionResult NotEnded()
+        {
+            using (var dbContext = new DbContext())
+            {
+                var zamowenia = dbContext.Zamowienia.GetAll().Where(z=>z.Obecny_status!="Zrealizowane").ToList();
+                return View("Index", zamowenia);
             }
         }
 

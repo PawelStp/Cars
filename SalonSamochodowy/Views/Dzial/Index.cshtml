@@ -24,6 +24,7 @@
         </td>
         <td>
             @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Szczegoly", "Details", "Dzial", new { id = item.Id }, null)
         </td>
     </tr>
 }

@@ -23,7 +23,12 @@ namespace SalonSamochodowy.Controllers
         // GET: Dzial/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Pracownicy.GetAll().Where(d=>d.Id_dzialu==id).ToList();
+                return View(dzialy);
+            }
         }
 
         // GET: Dzial/Create

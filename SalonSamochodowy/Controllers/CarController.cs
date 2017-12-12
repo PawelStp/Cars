@@ -1,4 +1,5 @@
 ﻿using SalonSamochodowy.Models;
+using SalonSamochodowy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,42 @@ namespace SalonSamochodowy.Controllers
         {
             using (var dbContext = new DbContext())
             {
-                var car = dbContext.Samochody.GetAll();
+                var car = dbContext.Samochody.GetAll().Where(c => c.Status != "Sprzedany").ToList();
                 return View(car);
+            }
+        }
+
+        public ActionResult Sellout()
+        {
+            using (var dbContext = new DbContext())
+            {
+                var cars = dbContext.Samochody.GetAll().Where(c => c.Status == "Sprzedany").ToList();
+
+                var clients = dbContext.Klienci.GetAll();
+
+                var sells = dbContext.Zakup.GetAll();
+
+                var vm = new List<SprzedanySamochodViewModel>();
+
+                foreach (var car in cars)
+                {
+                    var sell = sells.Where(s => s.Id_samochodu == car.Id).FirstOrDefault();
+                    var client = clients.Where(c => c.Id == sell.Id_klienta).FirstOrDefault();
+
+                    vm.Add(new SprzedanySamochodViewModel
+                    {
+                        Id = car.Id,
+                        Marka = car.Marka,
+                        Model = car.Model,
+                        MocSilnika = car.Moc_silnika??0,
+                        Pojemnosc = car.Pojemnosc_silnika??0,
+                        ImieKlienta = client.Imie,
+                        NazwiskoKlienta = client.Nazwisko,
+                        PESEL = client.PESEL
+                    });
+                }
+
+                return View(vm);
             }
         }
 

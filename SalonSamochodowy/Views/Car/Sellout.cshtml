@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SalonSamochodowy.ViewModels.SprzedanySamochodViewModel>
+
+@{
+    ViewBag.Title = "Sellout";
+}
+
+<h2>Sellout</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Marka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pojemnosc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MocSilnika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImieKlienta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazwiskoKlienta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PESEL)
+        </th>
+     
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pojemnosc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MocSilnika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImieKlienta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwiskoKlienta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PESEL)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Naprawa", "Create", "Naprawa", new { id = item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>

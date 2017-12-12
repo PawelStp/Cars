@@ -32,30 +32,34 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_pracownika)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ilosc_zamowionych)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_zamowienia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_samochodu_fabryka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ilosc_dostarczonych)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Obecny_status)
-        </td>
-        <td>
-            @Html.ActionLink("Dodaj dostawe", "Create", "Dostawa", new { id=item.Id },null) |
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_pracownika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ilosc_zamowionych)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_zamowienia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_samochodu_fabryka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ilosc_dostarczonych)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Obecny_status)
+            </td>
+            <td>
+                @if (item.Obecny_status != "Zrealizowane")
+                {
+                    @Html.ActionLink("Dodaj dostawe", "Create", "Dostawa", new { id = item.Id }, null)
+                }
+            </td>
+        </tr>
+    }
 
 </table>
