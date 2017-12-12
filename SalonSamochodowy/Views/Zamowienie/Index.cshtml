@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SalonSamochodowy.Models.Zamowienie>
+﻿@model IEnumerable<SalonSamochodowy.ViewModels.ZamowienieLisViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -15,51 +15,85 @@
             @Html.DisplayNameFor(model => model.Id_pracownika)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ilosc_zamowionych)
+            @Html.DisplayNameFor(model => model.Imie)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Data_zamowienia)
+            @Html.DisplayNameFor(model => model.Nazwisko)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_samochodu_fabryka)
+            @Html.DisplayNameFor(model => model.NazwaFabryki)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ilosc_dostarczonych)
+            @Html.DisplayNameFor(model => model.Model)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Obecny_status)
+            @Html.DisplayNameFor(model => model.Marka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PojemnoscSilnika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Moc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilość)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IloscDostarczonych)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_pracownika)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ilosc_zamowionych)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data_zamowienia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_samochodu_fabryka)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ilosc_dostarczonych)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Obecny_status)
-            </td>
-            <td>
-                @if (item.Obecny_status != "Zrealizowane")
-                {
-                    @Html.ActionLink("Dodaj dostawe", "Create", "Dostawa", new { id = item.Id }, null)
-                }
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_pracownika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaFabryki)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PojemnoscSilnika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilość)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IloscDostarczonych)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
 
 </table>

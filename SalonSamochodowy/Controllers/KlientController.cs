@@ -26,6 +26,7 @@ namespace SalonSamochodowy.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Search(Klient klient)
         {
@@ -47,7 +48,25 @@ namespace SalonSamochodowy.Controllers
         // GET: Klient/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var cars = dbContext.Samochody.GetAll().Where(c => c.Status == "Sprzedany").ToList();
+
+                var client = dbContext.Klienci.GetById(id);
+
+                var sells = dbContext.Zakup.GetAll().Where(z=>z.Id_klienta == id);
+
+                var vm = new List<Samochod>();
+
+                foreach (var sell in sells)
+                {
+                    var car = cars.Where(c => c.Id == sell.Id_samochodu).FirstOrDefault();
+
+                    vm.Add(car);
+                }
+
+                return View(vm);
+            }
         }
 
         // GET: Klient/Create

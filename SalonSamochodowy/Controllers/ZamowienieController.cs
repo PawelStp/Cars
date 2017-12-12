@@ -17,7 +17,38 @@ namespace SalonSamochodowy.Controllers
             using (var dbContext = new DbContext())
             {
                 var zamowenia = dbContext.Zamowienia.GetAll().Where(z=>z.Obecny_status=="Zrealizowane").ToList();
-                return View(zamowenia);
+
+                var pracownicy = dbContext.Pracownicy.GetAll();
+                var samochody = dbContext.Samochody_fabryczne.GetAll();
+                var fabryki = dbContext.Fabryki.GetAll();
+
+                var zvm = new List<ZamowienieLisViewModel>();
+
+                foreach (var zamowienie in zamowenia)
+                {
+
+                    var pracownik = pracownicy.Where(p => p.Id == zamowienie.Id_pracownika).FirstOrDefault();
+                    var samochod = samochody.Where(s => s.Id == zamowienie.Id_samochodu_fabryka).FirstOrDefault();
+                    var fabryka = fabryki.Where(f => f.Id == samochod.Id_fabryki).FirstOrDefault();
+
+                    zvm.Add(new ZamowienieLisViewModel
+                    {
+                        Id_pracownika = pracownik.Id,
+                        Data = zamowienie.Data_zamowienia,
+                        IloscDostarczonych = zamowienie.Ilosc_dostarczonych??0,
+                        Ilość = zamowienie.Ilosc_zamowionych,
+                        Imie = pracownik.Imie,
+                        Marka=samochod.Marka,
+                        Moc = samochod.Moc_silnika??0,
+                        Model = samochod.Model,
+                        NazwaFabryki = fabryka.Nazwa,
+                        Nazwisko = pracownik.Nazwisko,
+                        PojemnoscSilnika = samochod.Pojemnosc_silnika??0,
+                        Status = zamowienie.Obecny_status
+                    });
+
+                }
+                return View(zvm);
             }
         }
 
@@ -26,7 +57,38 @@ namespace SalonSamochodowy.Controllers
             using (var dbContext = new DbContext())
             {
                 var zamowenia = dbContext.Zamowienia.GetAll().Where(z=>z.Obecny_status!="Zrealizowane").ToList();
-                return View("Index", zamowenia);
+
+                var pracownicy = dbContext.Pracownicy.GetAll();
+                var samochody = dbContext.Samochody_fabryczne.GetAll();
+                var fabryki = dbContext.Fabryki.GetAll();
+
+                var zvm = new List<ZamowienieLisViewModel>();
+
+                foreach (var zamowienie in zamowenia)
+                {
+
+                    var pracownik = pracownicy.Where(p => p.Id == zamowienie.Id_pracownika).FirstOrDefault();
+                    var samochod = samochody.Where(s => s.Id == zamowienie.Id_samochodu_fabryka).FirstOrDefault();
+                    var fabryka = fabryki.Where(f => f.Id == samochod.Id_fabryki).FirstOrDefault();
+
+                    zvm.Add(new ZamowienieLisViewModel
+                    {
+                        Id_pracownika = pracownik.Id,
+                        Data = zamowienie.Data_zamowienia,
+                        IloscDostarczonych = zamowienie.Ilosc_dostarczonych ?? 0,
+                        Ilość = zamowienie.Ilosc_zamowionych,
+                        Imie = pracownik.Imie,
+                        Marka = samochod.Marka,
+                        Moc = samochod.Moc_silnika ?? 0,
+                        Model = samochod.Model,
+                        NazwaFabryki = fabryka.Nazwa,
+                        Nazwisko = pracownik.Nazwisko,
+                        PojemnoscSilnika = samochod.Pojemnosc_silnika ?? 0,
+                        Status = zamowienie.Obecny_status
+                    }); 
+
+                }
+                return View("Index", zvm);
             }
         }
 
