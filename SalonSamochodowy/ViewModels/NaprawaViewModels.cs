@@ -30,6 +30,9 @@ namespace SalonSamochodowy.ViewModels
         [Required]
         public int Id_samochodu { get; set; }
 
+        [Display(Name = "Cena")]
+        public int Cena { get; set; }
+
         [Display(Name = "Nazwa usterki")]
         public string NazwaUsterki { get; set; }
 
@@ -41,6 +44,7 @@ namespace SalonSamochodowy.ViewModels
 
         public int Id_usterki { get; set; }
 
+        [Display(Name = "Usterka")]
         public IEnumerable<SelectListItem> Usterki { get; set; }
 
     }

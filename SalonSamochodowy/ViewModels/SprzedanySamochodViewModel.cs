@@ -14,15 +14,20 @@ namespace SalonSamochodowy.ViewModels
         public string Marka { get; set; }
         [Display(Name = "Model")]
         public string Model { get; set; }
-        [Display(Name = "Pojemność")]
+        [Display(Name = "Pojemność [cm3]")]
         public float Pojemnosc { get; set; }
+        [Display(Name = "Moc silnika [km]")]
+        public int MocSilnika { get; set; }
+        [Display(Name = "Data produkcji")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DataProdukcji { get; set; }
         [Display(Name = "Imię")]
         public string ImieKlienta { get; set; }
         [Display(Name = "Nazwisko")]
         public string NazwiskoKlienta { get; set; }
         [Display(Name = "Pesel")]
         public string PESEL { get; set; }
-        [Display(Name = "Moc silnika")]
-        public int MocSilnika { get; set; }
+
     }
 }

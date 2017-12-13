@@ -3,14 +3,16 @@
 @{
     ViewBag.Title = "Index";
 }
+@{ int rowNo = 0; }
+<div class="text-center">
+    <h2>Naprawy</h2>
+</div>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-striped">
     <tr>
+        <th>
+            Nr
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Id_pracownika)
         </th>
@@ -30,16 +32,23 @@
             @Html.DisplayNameFor(model => model.Id_samochodu)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Data_naprawy)
+            @Html.DisplayNameFor(model => model.NazwaUsterki)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_usterki)
+            @Html.DisplayNameFor(model => model.Cena)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_naprawy)
+        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @(rowNo += 1)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Id_pracownika)
         </td>
@@ -59,15 +68,13 @@
             @Html.DisplayFor(modelItem => item.Id_samochodu)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.NazwaUsterki)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Data_naprawy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_usterki)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

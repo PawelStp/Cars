@@ -3,14 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
+@{ int rowNo = 0; }
 
-<h2>Index</h2>
+<div class="text-center">
+    <h2>Auta w salonie</h2>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-striped">
     <tr>
+        <th>
+            Nr
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Marka)
         </th>
@@ -39,6 +42,9 @@
     {
         <tr>
             <td>
+                @(rowNo += 1)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Marka)
             </td>
             <td>
@@ -59,11 +65,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Id_dostawy)
             </td>
+            @if (item != null)
+            {
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Sprzedaj", "Create", "Zakup", new { id = item.Id }, null)
-
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning"}) 
+                @Html.ActionLink("Sprzedaj", "Create", "Zakup", new { id = item.Id }, new { @class = "btn btn-default"})
             </td>
+            }
         </tr>
     }
 

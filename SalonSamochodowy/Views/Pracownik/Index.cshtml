@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@{ int rowNo = 0; }
 <div class="text-center">
     <h2>Pracownicy</h2>
 
@@ -14,6 +14,9 @@
 
 <table class="table">
     <tr>
+        <th>
+            Nr
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Imie)
         </th>
@@ -46,6 +49,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @(rowNo += 1)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Imie)
         </td>

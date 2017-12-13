@@ -4,14 +4,15 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="text-center">
+    <h2>Edycja samochodu</h2>
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Samochod</h4>
+    <div class="text-center">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -72,22 +73,17 @@
                 </div>
             </div>
         </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Cena, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Cena, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="text-center">
+                @Html.LabelFor(model => model.Cena, htmlAttributes: new { @class = "control-label" })<br/>
+                <div class="">
+                    @Html.EditorFor(model => model.Cena, new { htmlAttributes = new { @class = "" } })
                     @Html.ValidationMessageFor(model => model.Cena, "", new { @class = "text-danger" })
                 </div>
             </div>
+        <br/>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div class="text-center">
+                <input type="submit" value="Zapisz" class="btn btn-success" />
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

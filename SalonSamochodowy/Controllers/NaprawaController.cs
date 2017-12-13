@@ -38,7 +38,8 @@ namespace SalonSamochodowy.Controllers
                         NazwaUsterki = usterka.Nazwa,
                         Marka = samochod.Marka,
                         Model = samochod.Model,
-                        Id_samochodu = samochod.Id
+                        Id_samochodu = samochod.Id,
+                        Cena = usterka.Ogolny_koszt??0
                     });
                 }
                 return View(list);

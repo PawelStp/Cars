@@ -11,10 +11,15 @@ namespace SalonSamochodowy.Models
     {
         public virtual int Id { get; set; }
         [Required]
+        [Display(Name = "Id pracownika")]
         public virtual int Id_pracownika { get; set; }
         [Required]
+        [Display(Name = "Id samochodu")]
         public virtual int Id_samochodu { get; set; }
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data naprawy")]
         public virtual DateTime Data_naprawy { get; set; }
         [Required]
         public virtual int Id_usterki { get; set; }
