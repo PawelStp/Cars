@@ -4,50 +4,47 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="text-center">
+    <h2>Dodaj zamówienie</h2>
+</div>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>ZamowienieViewModel</h4>
+    <div class="text-center">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ilosc_zamowionych, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ilosc_zamowionych, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ilosc_zamowionych, "", new { @class = "text-danger" })
+        <div class="text-center">
+            @Html.LabelFor(model => model.Ilosc_zamowionych, htmlAttributes: new { @class = "text-center" })<br/>
+            <div class="text-center">
+                @Html.EditorFor(model => model.Ilosc_zamowionych, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Ilosc_zamowionych, "", new { @class = "text-danger" })<br />
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Data_zamowienia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Data_zamowienia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Data_zamowienia, "", new { @class = "text-danger" })
+        <div class="text-center">
+            @Html.LabelFor(model => model.Data_zamowienia, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Data_zamowienia, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Data_zamowienia, "", new { @class = "text-danger" })<br />
             </div>
         </div>
 
    
-        <div class="form-group">
-            @Html.LabelFor(m => m.SamochodyFabryczne, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+        <div class="text-center">
+            @Html.LabelFor(m => m.SamochodyFabryczne, new { @class = "text-center" })<br />
+            <div class="text-center">
                 @Html.DropDownList("Id_samochodu_fabryka", Model.SamochodyFabryczne, "Wybierz")
             </div>
         </div>
-        
+        <br />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="text-center">
+            <div class="text-center">
+                <input type="submit" value="Dodaj zamówienie" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -9,6 +9,7 @@ using static SalonSamochodowy.Repository.DBContext;
 
 namespace SalonSamochodowy.Controllers
 {
+    [Authorize]
     public class NaprawaController : Controller
     {
         // GET: Naprawa

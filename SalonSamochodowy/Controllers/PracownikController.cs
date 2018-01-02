@@ -9,6 +9,7 @@ using static SalonSamochodowy.Repository.DBContext;
 
 namespace SalonSamochodowy.Controllers
 {
+    [Authorize]
     public class PracownikController : Controller
     {
         // GET: Pracownik
@@ -33,10 +34,10 @@ namespace SalonSamochodowy.Controllers
                         NazwaDzialu = dzial.Nazwa,
                         Stanowisko = pracownik.Stanowisko,
                         DataZatrudnienia = pracownik.Data_zatrudnienia,
-                        DoKiedyZatrudniony = pracownik.Do_kiedy_zatrudniony??DateTime.Now,
+                        DoKiedyZatrudniony = pracownik.Do_kiedy_zatrudniony ?? DateTime.Now,
                         PESEL = pracownik.PESEL,
                         NrTelefonu = pracownik.Nr_telefonu,
-                        Pensja = pracownik.Pensja??0
+                        Pensja = pracownik.Pensja ?? 0
                     });
                 }
 
@@ -53,12 +54,25 @@ namespace SalonSamochodowy.Controllers
         // GET: Pracownik/Create
         public ActionResult Create()
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Dzialy.GetAll();
+
+                var vm = new AddPracownikViewModel();
+
+                vm.Dzialy = dzialy.Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Nazwa
+                });
+
+                return View(vm);
+            }
         }
 
         // POST: Pracownik/Create
         [HttpPost]
-        public ActionResult Create(Pracownik pracownik)
+        public ActionResult Create(AddPracownikViewModel pracownik)
         {
             try
             {
@@ -73,27 +87,83 @@ namespace SalonSamochodowy.Controllers
 
                         pracownik.Password = Crypto.Hash(pracownik.Password);
                         //  pracownik.ConfirmPassword = Crypto.Hash(pracownik.ConfirmPassword);
-                        pracownik.Role = "Pracownik";
 
                         if (p != null)
                         {
                             ModelState.AddModelError("PeselIstnieje", "Pesel istnieje w bazie danych");
-                            return View(pracownik);
+
+                            var dzialy = dbContext.Dzialy.GetAll();
+
+                            var vm = new AddPracownikViewModel();
+
+                            vm.Dzialy = dzialy.Select(c => new SelectListItem
+                            {
+                                Value = c.Id.ToString(),
+                                Text = c.Nazwa
+                            });
+
+                            return View(vm);
                         }
-                        dbContext.Pracownicy.Add(pracownik);
+
+                        Pracownik pra = new Pracownik
+                        {
+                            Data_zatrudnienia = pracownik.Data_zatrudnienia,
+                            Do_kiedy_zatrudniony = pracownik.Do_kiedy_zatrudniony,
+                            Id_dzialu = pracownik.DzialId,
+                            Imie = pracownik.Imie,
+                            Kod_pocztowy = pracownik.Kod_pocztowy,
+                            Miejscowosc = pracownik.Miejscowosc,
+                            Nazwisko = pracownik.Nazwisko,
+                            Nr_domu = pracownik.Nr_domu,
+                            Nr_telefonu = pracownik.Nr_telefonu,
+                            Password = pracownik.Password,
+                            Pensja = pracownik.Pensja,
+                            PESEL = pracownik.PESEL,
+                            Role = "Superadmin",
+                            Stanowisko = pracownik.Stanowisko,
+                            Ulica = pracownik.Ulica
+                        };
+
+                        dbContext.Pracownicy.Add(pra);
                         dbContext.SaveChanges();
                     }
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    return View();
+                    using (var dbContext = new DbContext())
+                    {
+                        var dzialy = dbContext.Dzialy.GetAll();
+
+                        var vm = new AddPracownikViewModel();
+
+                        vm.Dzialy = dzialy.Select(c => new SelectListItem
+                        {
+                            Value = c.Id.ToString(),
+                            Text = c.Nazwa
+                        });
+
+                        return View(vm);
+                    }
                 }
 
             }
             catch (Exception e)
             {
-                return View(pracownik);
+                using (var dbContext = new DbContext())
+                {
+                    var dzialy = dbContext.Dzialy.GetAll();
+
+                    var vm = new AddPracownikViewModel();
+
+                    vm.Dzialy = dzialy.Select(c => new SelectListItem
+                    {
+                        Value = c.Id.ToString(),
+                        Text = c.Nazwa
+                    });
+
+                    return View(vm);
+                }
             }
         }
 

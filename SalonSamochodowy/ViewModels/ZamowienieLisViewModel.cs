@@ -8,6 +8,7 @@ namespace SalonSamochodowy.ViewModels
 {
     public class ZamowienieLisViewModel
     {
+        public int Id { get; set; }
         [Display(Name = "Id")]
         public int Id_pracownika { get; set; }
 

@@ -25,7 +25,6 @@ namespace SalonSamochodowy.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel lvm)
         {
 

@@ -100,6 +100,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Data)
         </td>
+        <td>
+            @if (item.Status != "Zrealizowane")
+                {
+                @Html.ActionLink("Dodaj dostawe", "Create", "Dostawa", new { id = item.Id }, null)
+            }
+        </td>
+
     </tr>
 }
 

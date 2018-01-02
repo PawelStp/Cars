@@ -200,6 +200,7 @@
     <Compile Include="Models\Zamowienie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="ViewModels\AddPracownikViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\NaprawaViewModels.cs" />
     <Compile Include="ViewModels\PracownikViewModel.cs" />

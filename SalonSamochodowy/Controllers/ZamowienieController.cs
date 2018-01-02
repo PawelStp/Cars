@@ -9,9 +9,11 @@ using static SalonSamochodowy.Repository.DBContext;
 
 namespace SalonSamochodowy.Controllers
 {
+    [Authorize]
     public class ZamowienieController : Controller
     {
         // GET: Zamowienie
+        
         public ActionResult Index()
         {
             using (var dbContext = new DbContext())
@@ -75,6 +77,7 @@ namespace SalonSamochodowy.Controllers
 
                     zvm.Add(new ZamowienieLisViewModel
                     {
+                        Id = zamowienie.Id,
                         Id_pracownika = pracownik.Id,
                         Data = zamowienie.Data_zamowienia,
                         IloscDostarczonych = zamowienie.Ilosc_dostarczonych ?? 0,
@@ -113,6 +116,7 @@ namespace SalonSamochodowy.Controllers
                     Text = x.Marka + " " + x.Model + " " + x.Pojemnosc_silnika + " " + x.Moc_silnika 
 
                 });
+                zvm.Data_zamowienia = DateTime.Now;
             }
             return View(zvm);
         }
@@ -143,7 +147,19 @@ namespace SalonSamochodowy.Controllers
             }
             catch
             {
-                return View();
+
+                ZamowienieViewModel zvm = new ZamowienieViewModel();
+                using (var dbContext = new DbContext())
+                {
+                    var s = dbContext.Samochody_fabryczne.GetAll();
+                    zvm.SamochodyFabryczne = s.Select(x => new SelectListItem
+                    {
+                        Value = x.Id.ToString(),
+                        Text = x.Marka + " " + x.Model + " " + x.Pojemnosc_silnika + " " + x.Moc_silnika
+
+                    });
+                    return View(zvm);
+                }
             }
         }
 
