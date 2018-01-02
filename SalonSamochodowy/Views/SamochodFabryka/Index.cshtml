@@ -1,18 +1,19 @@
-﻿@model IEnumerable<SalonSamochodowy.Models.Samochod_fabryka>
+﻿@model IEnumerable<SalonSamochodowy.ViewModels.SamochodFabrykaViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="text-center">
+    <h2>Samochody fabryczne</h2>
+    @Html.ActionLink("Dodaj samochód", "Create", null, new { @class = "btn btn-success" })
+    <br/>
+    <br/>
+</div>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Id_fabryki)
+            @Html.DisplayNameFor(model => model.FabrykaName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Marka)
@@ -35,41 +36,36 @@
         <th>
             @Html.DisplayNameFor(model => model.Cena_fabryka)
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_fabryki)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Typ_wyposazenia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pojemnosc_silnika)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_produkcji)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Moc_silnika)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cena_fabryka)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FabrykaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Typ_wyposazenia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pojemnosc_silnika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_produkcji)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moc_silnika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena_fabryka)
+            </td>
+        </tr>
+    }
 
 </table>

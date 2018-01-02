@@ -1,0 +1,87 @@
+﻿@model SalonSamochodowy.ViewModels.SamochodFabrykaViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="text-center">
+    <h2>Samochód fabryczny</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="text-center">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="text-center">
+            @Html.LabelFor(m => m.Fabryki, new { @class = "text-center" })<br />
+            <div class="">
+                @Html.DropDownList("FabrykaId", Model.Fabryki, "Wybierz")<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            @Html.LabelFor(model => model.Marka, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Marka, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Marka, "", new { @class = "text-danger" })<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            @Html.LabelFor(model => model.Typ_wyposazenia, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Typ_wyposazenia, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Typ_wyposazenia, "", new { @class = "text-danger" })<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            @Html.LabelFor(model => model.Pojemnosc_silnika, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Pojemnosc_silnika, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Pojemnosc_silnika, "", new { @class = "text-danger" })<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            @Html.LabelFor(model => model.Data_produkcji, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Data_produkcji, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Data_produkcji, "", new { @class = "text-danger" })<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            @Html.LabelFor(model => model.Moc_silnika, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Moc_silnika, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Moc_silnika, "", new { @class = "text-danger" })<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            @Html.LabelFor(model => model.Cena_fabryka, htmlAttributes: new { @class = "text-center" })<br />
+            <div class="text-center">
+                @Html.EditorFor(model => model.Cena_fabryka, new { htmlAttributes = new { @class = "text-center" } })<br />
+                @Html.ValidationMessageFor(model => model.Cena_fabryka, "", new { @class = "text-danger" })<br />
+            </div>
+        </div>
+
+        <div class="text-center">
+            <div class="text-center">
+                <input type="submit" value="Dodaj samochód" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
