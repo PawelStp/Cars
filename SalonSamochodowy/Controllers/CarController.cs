@@ -47,7 +47,8 @@ namespace SalonSamochodowy.Controllers
                         Pojemnosc = car.Pojemnosc_silnika??0,
                         ImieKlienta = client.Imie,
                         NazwiskoKlienta = client.Nazwisko,
-                        PESEL = client.PESEL
+                        PESEL = client.PESEL,
+                        DataProdukcji = car.Data_produkcji?? DateTime.Now
                     });
                 }
 

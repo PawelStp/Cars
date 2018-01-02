@@ -3,14 +3,16 @@
 @{
     ViewBag.Title = "Details";
 }
+@{ int rowNo = 0; }
+<div class="text-center">
+    <h2>Samochody klienta</h2>
+</div>
 
-<h2>Details</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
+        <th>
+            Nr
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Marka)
         </th>
@@ -41,6 +43,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @(rowNo += 1)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Marka)
         </td>
         <td>
@@ -64,9 +69,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Id_dostawy)
         </td>
-        <td>
-            @Html.ActionLink("Naprawa", "Create", "Naprawa", new { id = item.Id }, null)
-        </td>
+        @if (item!= null)
+        {
+            <td>
+                @Html.ActionLink("Naprawa", "Create", "Naprawa", new { id = item.Id }, new { @class = "btn btn-warning"})
+            </td>
+        }
     </tr>
 }
 

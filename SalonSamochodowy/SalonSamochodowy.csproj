@@ -202,6 +202,7 @@
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\NaprawaViewModels.cs" />
+    <Compile Include="ViewModels\PracownikViewModel.cs" />
     <Compile Include="ViewModels\SprzedanySamochodViewModel.cs" />
     <Compile Include="ViewModels\ZakupViewModel.cs" />
     <Compile Include="ViewModels\ZamowienieLisViewModel.cs" />
@@ -291,6 +292,7 @@
     <Content Include="Views\Klient\Search.cshtml" />
     <Content Include="Views\Dzial\Details.cshtml" />
     <Content Include="Views\Klient\Details.cshtml" />
+    <Content Include="Views\Pracownik\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

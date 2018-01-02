@@ -3,30 +3,39 @@
 @{
     ViewBag.Title = "Index";
 }
+@{ int rowNo = 0; }
+<div class="text-center">
+    <h2>Wszystkie działy</h2>
+    <p>
+        @Html.ActionLink("Dodaj nowy dział", "Create", null, new { @class = "btn btn-success" })
+    </p>
+</div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Nr
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th></th>
+        </tr>
 
-<h2>Index</h2>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(rowNo += 1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Pracownicy", "Details", "Dzial", new { id = item.Id }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nazwa)
-        </th>
-        <th></th>
-    </tr>
+    </table>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwa)
-        </td>
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Szczegoly", "Details", "Dzial", new { id = item.Id }, null)
-        </td>
-    </tr>
-}
-
-</table>

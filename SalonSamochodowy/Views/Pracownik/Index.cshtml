@@ -1,27 +1,21 @@
-﻿@model IEnumerable<SalonSamochodowy.Models.Pracownik>
+﻿@model IEnumerable<SalonSamochodowy.ViewModels.PracownikViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
+@{ int rowNo = 0; }
+<div class="text-center">
+    <h2>Pracownicy</h2>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("Dodaj pracownika", "Create", null, new { @class = "btn btn-success" })
+    </p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Id_dzialu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stanowisko)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data_zatrudnienia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Do_kiedy_zatrudniony)
+            Nr
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Imie)
@@ -30,22 +24,22 @@
             @Html.DisplayNameFor(model => model.Nazwisko)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kod_pocztowy)
+            @Html.DisplayNameFor(model => model.NazwaDzialu)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Miejscowosc)
+            @Html.DisplayNameFor(model => model.Stanowisko)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ulica)
+            @Html.DisplayNameFor(model => model.DataZatrudnienia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nr_domu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nr_telefonu)
+            @Html.DisplayNameFor(model => model.DoKiedyZatrudniony)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PESEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrTelefonu)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Pensja)
@@ -56,16 +50,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Id_dzialu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stanowisko)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_zatrudnienia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Do_kiedy_zatrudniony)
+            @(rowNo += 1)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Imie)
@@ -74,28 +59,29 @@
             @Html.DisplayFor(modelItem => item.Nazwisko)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kod_pocztowy)
+            @Html.DisplayFor(modelItem => item.NazwaDzialu)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Miejscowosc)
+            @Html.DisplayFor(modelItem => item.Stanowisko)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Ulica)
+            @Html.DisplayFor(modelItem => item.DataZatrudnienia)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nr_domu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nr_telefonu)
+            @Html.DisplayFor(modelItem => item.DoKiedyZatrudniony)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PESEL)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.NrTelefonu)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Pensja)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }, new { @class = "btn btn-warning"}) 
+
         </td>
     </tr>
 }

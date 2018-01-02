@@ -1,4 +1,5 @@
 ﻿using SalonSamochodowy.Models;
+using SalonSamochodowy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,34 @@ namespace SalonSamochodowy.Controllers
         // GET: Pracownik
         public ActionResult Index()
         {
-                using (var dbContext = new DbContext())
+            using (var dbContext = new DbContext())
+            {
+                var pracownicy = dbContext.Pracownicy.GetAll();
+                var dzialy = dbContext.Dzialy.GetAll();
+
+                var list = new List<PracownikViewModel>();
+
+                foreach (var pracownik in pracownicy)
                 {
-                    var pracownicy = dbContext.Pracownicy.GetAll();
-                    return View(pracownicy);
+                    var dzial = dzialy.Where(d => d.Id == pracownik.Id_dzialu).FirstOrDefault();
+
+                    list.Add(new PracownikViewModel
+                    {
+                        Id = pracownik.Id,
+                        Imie = pracownik.Imie,
+                        Nazwisko = pracownik.Nazwisko,
+                        NazwaDzialu = dzial.Nazwa,
+                        Stanowisko = pracownik.Stanowisko,
+                        DataZatrudnienia = pracownik.Data_zatrudnienia,
+                        DoKiedyZatrudniony = pracownik.Do_kiedy_zatrudniony??DateTime.Now,
+                        PESEL = pracownik.PESEL,
+                        NrTelefonu = pracownik.Nr_telefonu,
+                        Pensja = pracownik.Pensja??0
+                    });
                 }
+
+                return View(list);
+            }
         }
 
         // GET: Pracownik/Details/5
@@ -51,7 +75,7 @@ namespace SalonSamochodowy.Controllers
                         //  pracownik.ConfirmPassword = Crypto.Hash(pracownik.ConfirmPassword);
                         pracownik.Role = "Pracownik";
 
-                        if(p!=null)
+                        if (p != null)
                         {
                             ModelState.AddModelError("PeselIstnieje", "Pesel istnieje w bazie danych");
                             return View(pracownik);
@@ -65,9 +89,9 @@ namespace SalonSamochodowy.Controllers
                 {
                     return View();
                 }
-                
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View(pracownik);
             }
@@ -76,17 +100,26 @@ namespace SalonSamochodowy.Controllers
         // GET: Pracownik/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var dbContext = new DbContext())
+            {
+                var dzialy = dbContext.Pracownicy.GetAll();
+                return View(dzialy.Where(d => d.Id == id).FirstOrDefault());
+            }
         }
 
         // POST: Pracownik/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Pracownik collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                using (var dbContext = new DbContext())
+                {
+                    collection.Password = Crypto.Hash(collection.Password);
+                    dbContext.Pracownicy.Update(collection);
+                    dbContext.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

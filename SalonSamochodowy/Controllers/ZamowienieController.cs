@@ -48,6 +48,8 @@ namespace SalonSamochodowy.Controllers
                     });
 
                 }
+                ViewBag.Message = "Zrealizowane";
+
                 return View(zvm);
             }
         }
