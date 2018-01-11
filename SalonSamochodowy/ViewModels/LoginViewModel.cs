@@ -14,7 +14,7 @@ namespace SalonSamochodowy.ViewModels
 
         [Display(Name = "Hasło")]
         [DataType(DataType.Password)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Haslo jest wymagane")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Hasło jest wymagane")]
         public string Password { get; set; }
     }
 }

@@ -11,6 +11,5 @@
     </many-to-one>
     <property name="Obecny_status" column="Obecny_status" />
     <property name="Ilosc_dostarczonych" column="Ilosc_dostarczonych" />
-
   </class>
 </hibernate-mapping>

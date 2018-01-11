@@ -27,9 +27,11 @@ namespace SalonSamochodowy.Models
         public virtual DateTime? Data_produkcji { get; set; }
 
         [Display(Name = "Pojemność silnika [cm3]")]
+        [Range(800, 15000, ErrorMessage = "Nieprawidłowa wartość")]
         public virtual float? Pojemnosc_silnika { get; set; }
 
         [Display(Name = "Moc silnika [km]")]
+        [Range(20, 500, ErrorMessage = "Nieprawidłowa wartość")]
         public virtual int? Moc_silnika { get; set; }
 
         [Display(Name = "Cena [PLN]")]

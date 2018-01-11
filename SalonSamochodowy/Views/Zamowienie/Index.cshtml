@@ -103,7 +103,7 @@
         <td>
             @if (item.Status != "Zrealizowane")
                 {
-                @Html.ActionLink("Dodaj dostawe", "Create", "Dostawa", new { id = item.Id }, null)
+                @Html.ActionLink("Dodaj dostawę", "Create", "Dostawa", new { id = item.Id }, new { @class = "btn btn-default"})
             }
         </td>
 

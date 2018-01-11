@@ -76,7 +76,7 @@ namespace SalonSamochodowy.Controllers
                     dbContext.Samochody.Update(samochod);
                     dbContext.SaveChanges();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Sellout", "Car");
             }
             catch
             {

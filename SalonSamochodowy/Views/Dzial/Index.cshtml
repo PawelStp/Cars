@@ -30,7 +30,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Nazwa)
                 </td>
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Superadmin"))
                 {
                     <td>
                         @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })

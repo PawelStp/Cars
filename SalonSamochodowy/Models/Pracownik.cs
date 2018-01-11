@@ -31,17 +31,19 @@ namespace SalonSamochodowy.Models
         public virtual DateTime? Do_kiedy_zatrudniony { get; set; }
 
         [Display(Name = "Imię")]
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Imię wymagane")]
         public virtual string Imie { get; set; }
 
         [Display(Name = "Nazwisko")]
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Nazwisko wymagane")]
         public virtual string Nazwisko { get; set; }
 
         [Display(Name = "Kod pocztowy")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Kod pocztowy wymagany")]
         public virtual string Kod_pocztowy { get; set; }
 
         [Display(Name = "Miejscowość")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Miejscowość wymagana")]
         public virtual string Miejscowosc { get; set; }
 
         [Display(Name = "Ulica")]

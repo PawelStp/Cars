@@ -119,7 +119,7 @@ namespace SalonSamochodowy.Controllers
                             Password = pracownik.Password,
                             Pensja = pracownik.Pensja,
                             PESEL = pracownik.PESEL,
-                            Role = "Superadmin",
+                            Role = "Pracownik",
                             Stanowisko = pracownik.Stanowisko,
                             Ulica = pracownik.Ulica
                         };
